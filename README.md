@@ -11,3 +11,6 @@ below. The aim for these notes is to go right from elementary combinatorics to l
 - [Pach & Agarwal's "Combinatorial Geometry"](https://onlinelibrary.wiley.com/doi/book/10.1002/9781118033203)
 - [Alon & Spencer's "The Probabilistic Method"](http://math.bme.hu/~gabor/oktatas/SztoM/AlonSpencer.ProbMethod3ed.pdf)
 
+The following exercises have a complete solution. 
+
+

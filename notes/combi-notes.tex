@@ -27,7 +27,7 @@
 \date{\today}
 \newcommand{\subtitle}{}
 \newcommand{\institution}{Department of Mathematical Sciences, The University of Bath}
-\newcommand{\keywords}{Combinatorics}
+\newcommand{\keywords}{Combinatorics, Probability}
 
 \newcounter{definitioncount} % tcolorbox counter, for ease of self-reference
 \newcounter{lemmacount}
@@ -429,7 +429,10 @@ the rows or the columns. For certain selections of numbers, this can yield inter
 As before, we can double count ourselves a proof of this theorem. 
 
 \begin{proof}[Proof 2]
-
+    Consider the coefficient of $x^ky^{n-k}$ of \[(x+y)^n = \overbrace{(x+y)\cdots(x+y)}^{n \text{ times}}\] When computing this expansion, 
+    we are multiplying exactly one of $x$ or $y$ from each $(x+y)$ term on the RHS. Our entire expansion will be the sum of all such choices. 
+    Thus, to compute the coefficient of $x^ky^{n-k}$ in $(x+y)^n$, it suffices to count the number of ways to choose exactly $k$ $x$s out the 
+    $n$ possible choices. This is clearly $\binom{n}{k}$ and hence the result follows. 
 \end{proof}
 
 As an immediate corollary we have the following.
@@ -452,6 +455,44 @@ We may also take a more combinatorial approach to proving these identities.
     giving the latter equivalence.
 \end{proof}
 
+Let us recall the following lemma from (elementary) complex analysis, concerning sums of powers of roots of unity. If you are not yet familiar 
+with these tools please skip the next lemma and problem.
+
+\begin{lemma}[]{sums of powers of roots of unity}
+    Let $1, \xi_1, \dots, \xi_{n-1}$ be the $n$-roots of unity, that is the solutions to $z^n = 1, z \in \mathbb{C}$. Then, one has 
+    \[1 + \sum_{j=1}^{n-1} \xi_j^\ell = \begin{cases}n : \ell \equiv 0 \mod n \\ 0 : \ell \not\equiv 0 \mod n\end{cases}\]
+\end{lemma}
+
+\begin{proof}
+    Write $\xi_j = \exp(2\pi i j/n)$. If $\ell = mn, m \in \mathbb{Z}$, then $\xi_j^\ell = \exp(2\pi i m) = 1$ and hence
+    \[1 + \sum_{j=1}^{n-1}\xi_j^\ell = n\] 
+    Conversely, if $\ell = mn + r, m \in \mathbb{Z}, 0 < r < n$ then $\xi_j^\ell = \exp(2\pi i (mn+r)j/n) = \exp(2\pi i jr/n)$ and 
+    \[1 + \sum_{j=1}^{n-1} \xi_j^\ell = \sum_{j=0}^{n-1}\left(\exp(2\pi i r/n)\right)^j = \frac{1 - \exp(2\pi i r)}{1 - \exp(2\pi i r/n)} = 0\]
+    where we used the standard result for the sum of a geometric series in equality 2. 
+\end{proof}
+
+With this, we can prove the following result. Generalising further the previous problem. 
+
+\begin{problem}[]{sums of binomial multiples}
+    Compute the following quantity. 
+    \[\sum_{k=0}^n \binom{mn}{mk}\]
+\end{problem}
+
+\begin{proof}[Solution]
+    Let $\xi_0, \dots, \xi_{m-1}$ be the $m^\text{th}$ roots of unity, with $\xi_0 = 1$. Then, by our previous lemma and the Binomial theorem,
+    we can deduce 
+    \[\sum_{k=0}^{n}\binom{mn}{mk} = \sum_{k=0}^{mk}\binom{nm}{k}\left(\frac{1}{m}\sum_{\ell = 0}^{m-1}\xi_\ell^k\right) 
+    = \frac{1}{m}\sum_{\ell = 0}^{m-1} \sum_{k=0}^{mn} \binom{mn}{k}\xi_i^k = \frac{1}{m}\sum_{\ell = 0}^{m-1} (1+\xi_\ell)^{mn}\]
+    The term of the RHS can be further simplified, I elect to leave it here. 
+\end{proof}
+
+THINGS TO ADD:
+\begin{itemize}
+\item VANDERMONDE'S
+\item HOCKEYSTICK LEMMA 
+\end{itemize}
+
+
 \subsection*{Exercises}
 
 \begin{exercise}[]{}
@@ -459,17 +500,92 @@ We may also take a more combinatorial approach to proving these identities.
     $A_1$ occurs an even number of times?
 \end{exercise}
 
+\subsection{The Pigeonhole Principle}
+
+If I have $5$ pigeons and $4$ containers, each only able to fit one pigeon, can I fit all the pigeons into my containers? Of course not! It turns 
+out this common-sense principle allows us to discover many, many, combinatorial facts$\dots$
+
+\begin{theorem}[]{pigeonhole principle}
+    Given a set $X$ of size $n$, any partition of $X$ into $m < n$ subsets $X_1, \dots, X_m$ must have at least one $X_i$ with $|X_i| > 1$. 
+\end{theorem}
+
+\begin{proof}
+    Suppose each $|X_i| \leq 1$, then $|X| = |\cup_{i=1}^m X_i| = \sum_{i=1}^m |X_i| \leq m < n$. Absurd!
+\end{proof}
+
+We can slightly better than this. What if my containers can fit $2$ pigeons and I only have $2$ this time. Then I still can't fit my pigeons 
+into my containers. We make this rigorous as follows. 
+
+\begin{theorem}[]{full pigeonhole principle}
+    Given a set $X$ of size $n = km+1$, any partition of $X$ into $m$ subsets $X_1, \dots, X_m$ must have at least one $X_i$ with $|X_i| > k$
+\end{theorem}
+
+\begin{proof}
+    Same idea.
+\end{proof}
+
+We also have a infinite pigeonhole principle. If I can only fit a finite number of pigeons into each container then, assuming I only have 
+finitely many containers, I cannot fit an infinite number of pigeons into my containers.
+
+\begin{theorem}[]{infinite pigeonhole principle}
+    Given a set $X$ of infinite cardinality, any partition of $X$ into finitely many sets $X_1, \dots, X_m$ must have some $X_i$ also of infinite 
+    cardinality. 
+\end{theorem}
+
+\begin{proof}
+    Guess :)
+\end{proof}
+
+\subsubsection*{Exercises}
+
+\newpage
+
+\subsection{The Principle of Inclusion-Exclusion}
+
+It is often much easier to count how many objects have properties $A$ AND $B$ than $A$ OR $B$. Thankfully we have the following principle to 
+relate the two.
+
+\newpage
+
+\subsection{Generating Functions}
+
+\subsubsection*{Exercises}
+
+\newpage 
+
+\subsection{Miscellaneous Topics}
+
+\subsubsection*{Exercises}
+
+\newpage
+
 \subsection{Additional Problems}
 
 \newpage
 
 \section{The Probabilistic Method}
 
+\subsection{Introducing the Probabilistic Method with Ramsey Bounds}
 
+\subsubsection*{Exercises}
 
-\subsection{}
+\newpage
 
+\subsection{Linearity of Expectation}
 
+\subsubsection*{Exercises}
+
+\newpage
+
+\subsection{Alteration}
+
+\subsubsection*{Exercises}
+
+\newpage
+
+\subsection{Lovas\'{z} Local Lemma}
+
+\subsubsection*{Exercises}
 
 \newpage
 

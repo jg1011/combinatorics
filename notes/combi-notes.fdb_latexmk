@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1730809149.99957 "c:/Users/jacob/proj/combinatorics/notes/combi-notes.tex" "combi-notes.pdf" "combi-notes" 1730809151.0581 0
+["pdflatex"] 1730817684.23739 "c:/Users/jacob/proj/combinatorics/notes/combi-notes.tex" "combi-notes.pdf" "combi-notes" 1730817685.26052 0
   "C:/Users/jacob/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1730806607 122859 3eb14d8249cedea77d099bb8aad6fdf7 ""
   "C:/Users/jacob/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1727952132 11548 93fd48e21cd4c008428b77a1bcbfa8bc ""
   "C:/Users/jacob/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1727881927 11948197 20c6e57245285ee498160c9c98e56c13 ""
@@ -189,10 +189,10 @@
   "C:/Users/jacob/AppData/Local/Programs/MiKTeX/tex/latex/tools/verbatim.sty" 1718356376 7532 d2e1111e17bfebb1607d8ffa779705ec ""
   "C:/Users/jacob/AppData/Local/Programs/MiKTeX/tex/latex/trimspaces/trimspaces.sty" 1253169183 1380 971a51b00a14503ddf754cab24c3f209 ""
   "C:/Users/jacob/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "c:/Users/jacob/proj/combinatorics/notes/combi-notes.tex" 1730809147 18962 b78af477f515c719d28222e63373d1c2 ""
-  "combi-notes.aux" 1730809150 788 bdfe0ed7d54f69c2418f5076d941ffcb "pdflatex"
-  "combi-notes.tex" 1730809147 18962 b78af477f515c719d28222e63373d1c2 ""
-  "combi-notes.toc" 1730809150 468 b3f46704f338fc31e41ad9d6fdbc44f6 "pdflatex"
+  "c:/Users/jacob/proj/combinatorics/notes/combi-notes.tex" 1730817682 23777 738b7388ce3afe4963b8baa1d6198594 ""
+  "combi-notes.aux" 1730817685 1659 39a8db858cf49f8bacda8f107e6dabf9 "pdflatex"
+  "combi-notes.tex" 1730817682 23777 738b7388ce3afe4963b8baa1d6198594 ""
+  "combi-notes.toc" 1730817685 1052 3ca705a0676613af3de5cabc4cf13175 "pdflatex"
   (generated)
   "combi-notes.aux"
   "combi-notes.log"
