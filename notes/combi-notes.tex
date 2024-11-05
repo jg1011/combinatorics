@@ -1,0 +1,480 @@
+\documentclass{article} 
+
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage[a4paper, margin=1in]{geometry} 
+\usepackage{titling}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{mathtools}
+\usepackage{amsthm} % For proof environments only, labelling of thms done with custom counter
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp} % TM logo, shits n giggles
+
+%%% Misc commands %%%
+\newcommand\iidsim{\stackrel{\mathclap{\tiny\mbox{i.i.d}}}{\sim}}
+\newcommand\indist{\stackrel{\mathclap{\tiny\mbox{$\mathcal{D}$}}}{\longrightarrow}}
+\newcommand\nidist{\stackrel{\mathclap{\tiny\mbox{$\mathcal{D}$}}}{\longleftarrow}}
+\newcommand{\indep}{\perp\!\!\!\!\perp} 
+
+\setlength{\parindent}{0pt} % Remove indentation upon new paragraph. 
+
+%%% Title page information %%%
+\title{Combinatorics}
+\author{Jacob Green}
+\date{\today}
+\newcommand{\subtitle}{}
+\newcommand{\institution}{Department of Mathematical Sciences, The University of Bath}
+\newcommand{\keywords}{Combinatorics}
+
+\newcounter{definitioncount} % tcolorbox counter, for ease of self-reference
+\newcounter{lemmacount}
+\newcounter{examplecount}
+\newcounter{theoremcount}
+\newcounter{propositioncount}
+\newcounter{corollarycount}
+\newcounter{remarkcount}
+\newcounter{problemcount}
+\newcounter{exercisecount}
+\counterwithin{corollarycount}{section}
+\counterwithin{propositioncount}{section}
+\counterwithin{remarkcount}{section}
+\counterwithin{theoremcount}{section}
+\counterwithin{examplecount}{section}
+\counterwithin{lemmacount}{section}
+\counterwithin{definitioncount}{section}
+\counterwithin{problemcount}{section}
+\counterwithin{exercisecount}{section}
+\renewcommand{\thecorollarycount}{\thesection.\arabic{corollarycount}}
+\renewcommand{\thepropositioncount}{\thesection.\arabic{propositioncount}}
+\renewcommand{\theremarkcount}{\thesection.\arabic{remarkcount}}
+\renewcommand{\thetheoremcount}{\thesection.\arabic{theoremcount}}
+\renewcommand{\theexamplecount}{\thesection.\arabic{examplecount}}
+\renewcommand{\thelemmacount}{\thesection.\arabic{lemmacount}}
+\renewcommand{\thedefinitioncount}{\thesection.\arabic{definitioncount}}
+\renewcommand{\theproblemcount}{\thesection.\arabic{problemcount}}
+\renewcommand{\theexercisecount}{\thesection.\arabic{exercisecount}}
+\newcounter{claimcount} % Used for proof with lots of claims
+
+\newtcolorbox{definition}[2][auto counter, number within=section]{
+  colback=black!5!white, 
+  colframe=black!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black,
+  title=Definition \thedefinitioncount $\:$ (#2), 
+  before upper = \refstepcounter{definitioncount},
+  #1, % Optional params
+}
+
+\newtcolorbox{lemma}[2][auto counter, number within=section]{
+  colback=blue!5!white, 
+  colframe=blue!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Lemma \thelemmacount $\:$ (#2),
+  before upper = \refstepcounter{lemmacount} 
+  #1, % Optional params
+}
+
+\newtcolorbox{example}[2][auto counter, number within=section]{
+  colback=green!5!white, 
+  colframe=green!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Example \theexamplecount $\:$ (#2), 
+  before upper = \refstepcounter{examplecount}
+  #1, % Optional params
+}
+
+\newtcolorbox{problem}[2][auto counter, number within=section]{
+  colback=purple!5!white, 
+  colframe=purple!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Problem \theproblemcount $\:$ (#2), 
+  before upper = \refstepcounter{problemcount}
+  #1, % Optional params
+}
+
+\newtcolorbox{theorem}[2][auto counter, number within=section]{
+  colback=red!5!white,
+  colframe=red!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Theorem \thetheoremcount $\:$ (#2), 
+  before upper = \refstepcounter{theoremcount},
+  #1, % Optional params
+}
+
+\newtcolorbox{proposition}[2][auto counter, number within=section]{
+  colback=purple!5!white,
+  colframe=purple!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Proposition \thepropositioncount $\:$ (#2), 
+  before upper = \refstepcounter{propositioncount},
+  #1, % Optional params
+}
+
+\newtcolorbox{corollary}[2][auto counter, number within=section]{
+  colback=yellow!5!white,
+  colframe=yellow!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Corollary \thecorollarycount $\:$ (#2),
+  before upper = \refstepcounter{corollarycount}, 
+  #1, % Optional params
+}
+
+\newtcolorbox{remark}[2][auto counter, number within=section]{
+  colback=black!5!white,
+  colframe=black!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Remark \theremarkcount $\:$ (#2),
+  before upper = \refstepcounter{remarkcount}, 
+  #1, % Optional params
+}
+
+\newtcolorbox{exercise}[2][auto counter, number within=section]{
+  colback=black!5!white,
+  colframe=black!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Exercise \theexercisecount $\:$ #2,
+  before upper = \refstepcounter{exercisecount}, 
+  #1, % Optional params
+}
+
+\newtcolorbox[use counter=claimcount]{claim}[1][]{%
+    colback=green!10, 
+    colframe=green!50!black, 
+    coltitle=black, 
+    fonttitle=\bfseries, 
+    boxrule=0.5mm, 
+    colbacktitle=green!30,
+    enhanced, % Allows additional options
+    boxed title style={sharp corners}, 
+    attach title to upper={},
+    titlerule=0mm, 
+    title=Claim: $\;$,
+    before=\par\smallskip\noindent, 
+    #1
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    % Adding an image (optional)
+    
+    % Title
+    {\Huge \bfseries \thetitle \par}
+    \vspace{0.5cm}
+    
+    % Subtitle (if any)
+    {\Large \subtitle \par}
+    \vspace{1cm}
+    
+    % Author and institution
+    {\large \theauthor \par}
+    {\institution \par}
+    \vspace{1cm}
+    
+    % Date
+    {\large \thedate \par}
+    \vspace{1.5cm}
+    
+    % Abstract section
+    \begin{abstract}
+        \lipsum[10]
+    \end{abstract}
+    \vspace{1cm}
+    
+    % Keywords section
+    \textbf{Keywords:} \keywords
+    \vfill % Pushes the following content to the bottom
+    
+    % Footer or further information
+    \textit{}
+\end{titlepage}
+
+\newpage 
+
+\setcounter{page}{1} % Start page numbering from 1 after title page
+
+\section*{Preface}
+
+\subsection*{Notation}
+
+\begin{itemize}
+    \item $\mathbb{N} = \{1, 2, \dots\}$ and $\mathbb{N}_0 = \mathbb{N} \cup \{0\}$
+    \item $[n] = \{1, \dots, n\}$
+    \item if $a$ is defined to be $b$ we may say $a := b$ (but I will often forget)
+    \item $A^k = \overbrace{A \times \cdots \times A}^{k \text{ times}}$ for a set $A$, $\times$ being the Cartesian product. 
+\end{itemize}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Elementary Combinatorics}
+
+\setcounter{lemmacount}{1}
+\setcounter{examplecount}{1}
+\setcounter{theoremcount}{1}
+\setcounter{propositioncount}{1}
+\setcounter{corollarycount}{1}
+\setcounter{remarkcount}{1}
+\setcounter{definitioncount}{1}
+\setcounter{problemcount}{1}
+\setcounter{exercisecount}{1}
+
+
+In combinatorics we are concerned with counting the number of objects from a collection. For example, we may count the positive integers divisible
+by $3$ that are less than $1000$. Here the objects are positive integers are the objects and the collection is those objects that are both divisible 
+by $3$ and less than $1000$. \\
+
+As a set is just is collection of objects, we will often phrase things set theoretically. 
+
+\subsection{Fundamental Principles}
+
+% Count boxes individually over naturals
+
+To begin counting anything interesting, we'll need the following principles. The first two let us count things inductively (e.g. counting 
+wine bottles by counting in threes or counting the number of wine $\&$ cheese pairings by multiplying the number of wine bottles and the 
+number of cheeses). The final simply says it doesn't matter what order we count each element (e.g. wine bottle) in.  
+
+\begin{theorem}[]{addition principle}
+    Let $n \in \mathbb{N}$. Let $A_1, \dots, A_n$ be finite sets. One has\footnote{$A_1, \dots, A_n$ are said to be disjoint if 
+    $\cap_{i=1}^n A_i = \emptyset$}
+    \[A_1, \dots, A_n \text{ disjoint} \quad \Longrightarrow \quad |A_1 \cup \cdots \cup A_n| = |A_1| + \cdots + |A_n|\]
+\end{theorem}
+
+To prove this, we simply count both sides one term at a time.
+
+\begin{proof}
+    Let $x \in \cup_{i=1}^n A_i$. Then $x \in A_i$ for exactly one $1 \leq i \leq n$ and hence 
+    \[|A_1| + \cdots + |A_n| =\sum_{x \in A_1}1 + \cdots + \sum_{x \in A_n}1 = \sum_{x \in \cup_{i=1}^n A_i}1 = |A_1 \cup \cdots \cup A_n|\] 
+    by counting both sides term by term.
+\end{proof}
+
+\begin{theorem}[]{multiplication principle}
+    Let $n \in \mathbb{N}$. Let $A_1, \dots, A_n$ be finite sets. One has
+    \[|A_1 \times \cdots \times A_n| = |A_1| \times \cdots \times |A_n|\]
+\end{theorem}
+
+This time we count terms in each slot recursively.
+
+\begin{proof}
+    Consider an arbitrary element $x = (x_1, \dots, x_n) \in A_1 \times \cdots \times A_n$ and let $1 \leq i \leq n$. Then fixing $x_j, j \neq i$
+    we have $|A_i|$ possible choices for $x_i$. Hence, we have 
+    \[|A_1 \times \cdots \times A_n| = \sum_{i=1}^n\sum_{x \in A_i}\left|\cap_{j \neq i}A_j\right| 
+    = \sum_{i=1}^n |A_i|\sum_{x \in A_i}\left|\cap_{j \neq i}A_j\right| = \cdots = |A_1| \times \cdots \times |A_n|\]
+    by repeated application of this reasoning.
+\end{proof}
+
+\begin{theorem}[]{bijection principle}
+    Let $A$ and $B$ be sets. If there is a bijection\footnote{A bijection is a one-to-one mapping} $\pi: A \to B$ then $|A| = |B|$
+\end{theorem}
+
+\begin{proof}
+    This is a truism. 
+\end{proof}
+
+The addition principle can be thought of as emptying two containers of $n$ and $m$ wine bottles and containing how many bottles you have 
+in total ($n+m$), whereas the multiplication principle can be thought of as counting the number of ways of pairing $b$ boys with $g$ girls. 
+The bijection principle says if we take $s$ students and select them one by one at random, $t$ times, we'll always have selected $t$ students. 
+We will often look for such interpretations in combinatorics. \\
+
+With just these principles, we can count all the following quantities. 
+
+\begin{problem}[]{$k$-words with repetitions}
+    How many words length $k$ can be formed from an alphabet with $n$ letters.
+\end{problem}
+
+\begin{proof}[Solution]
+    To count the number of words with repetitions allowed, we sample with replacement to get
+    \[\underbrace{n \times \cdots \times n}_{k \text{ times}} = n^k\]
+    $k$-words (or $k$-sequences) on $n$ symbols. \\
+\end{proof}
+
+\begin{problem}[]{$k$-words without repetitions}
+    How many words length $k$ with distinct letters can be formed from an alphabet with $n$ letters. 
+\end{problem}
+
+\begin{proof}[Solution]
+    For $k$-words without repetition, we sample without replacement for each letter to get
+    \[n \times (n-1) \times \cdots \times (n-k+1) =: n^{\underline{k}}\]
+    $k$-words without repetition on $n$ symbols.\footnote{We call $n^{\underline{k}}$ the falling factorial of $n$}
+\end{proof}
+
+If we were to consider words of length $n$ on $n$ symbols without repetition, then we would simply be {\it permuting} (i.e. reordering) the 
+$n$ symbols. Hence we have $n \times (n-1) \times \cdots \times 1 =: n!$ {\it permutations} on $n$ symbols. Using this notation we have 
+$n^{\underline{k}} = n!/(n-k)!$. From this, we have the following result.
+
+\begin{problem}[]{$k$-subsets}
+    How many subsets size $k$ are there of a set size $n$?
+\end{problem}
+
+\begin{proof}[Solution]
+    Let $x$ be the desired quantity. For each subset size $k$, we may reorder it's elements in $k!$ ways. If we care about the order of the elements 
+    in the subset, then the number of such subsets is precisely the number of $k$-words without repetition. Hence \[x \cdot k! = \frac{n!}{(n-k)!}\]
+    and we have counted the desired quantity.
+\end{proof}
+
+Under the hood there we used the bijection principle, as we implicitly assumed (quite reasonably) the existence of a bijection from the 
+collection of subsets size $k$ where reordering matters and the $k$-words on $n$ symbols. \\
+
+We call $\binom{n}{k} := \frac{n!}{k!(n-k)!}$ the {\it binomial coefficient}, and would say this as ``$n$ choose $k$''. We will dedicate an 
+entire section (in fact, next section) to these. \\ 
+
+\begin{problem}[]{$k$-multisubsets}
+    How many multisubsets\footnote{a multiset is a set that allows repetition, see https://en.wikipedia.org/wiki/Multiset} of size $k$ are there
+    in a set of $n$ objects?
+\end{problem}
+
+\begin{proof}[Solution]
+    Let $X = \{x_1, \dots, x_n\}$. We call the number of times $x_i, 1 \leq i \leq n$ appears in a multisubset of $X$ the {\it multiplicity} of $x_i$.
+    We know that the size of a multiset is the sum of its multiplicities, thus it suffices to count solutions $(\ell_1, \dots, \ell_n)$ of 
+    nonnegative integers to 
+    \[\ell_1 + \cdots + \ell_n = k\] 
+    which by setting $\ell^\prime := \ell + 1$ is the same as counting positive integer solutions to 
+    \[\ell^\prime_1 + \cdots + \ell^\prime_n = k + n\] Now write this as \[\underbrace{1 + \cdots + 1}_{\ell_1^\prime \text{ times}} + 
+    \cdots + \underbrace{1 + \cdots + 1}_{\ell_n^\prime \text{ times}} = k + n\]
+    We are tasked with dividing up the $k + n$ ones into $n$ groups, which can be done by insering $n-1$ stars in between two ones (not the edges
+    as we require $n$ nonempty collections of ones) to signifying the beginning of a new group. This gives $\binom{n-k-1}{n-1} = \binom{n-k-1}{k}$
+    possibilities.
+\end{proof}
+
+\begin{problem}[]{$k$-partitions with a given sizing}
+    How many ways are there to divide a set partition a set $X$ of size $n$ into sets $X_1, \dots, X_k$ with size $n_1, \dots, n_k$ respectively 
+    (where $n_1 + \cdots + n_k = n$)?
+\end{problem}
+
+\begin{proof}[Solution]
+    There are 
+    \[\binom{n - n_1 - \cdots - n_{i-1}}{n_i}\]
+    ways of choosing the $X_i$ once $X_1, \dots, X_{i-1}$ have been chosen, and 
+    \[\binom{n}{k}\binom{n - k}{m} = \frac{n!}{k!m!(n-k-m)!}\] 
+    So all together one obtains 
+    \[\binom{n}{n_1}\binom{n-n_1}{n_2}\cdots\binom{n - (n_1 + \cdot + n_{k-1})}{n_k} = \frac{n!}{n_1!\cdots n_k!} =: \binom{n}{n_1, \dots, n_k}\]
+    such partitions.\footnote{The quantity $\binom{n}{n_1, \dots, n_k}$ is called the multinomial coefficient}
+\end{proof}
+
+\subsubsection*{Exercises}
+
+\begin{exercise}[]{}
+    In how many ways can $n$ people be seated at a circular table with $n$ seats, where we do not classify between seatings that can be 
+    obtained from one another by rotating the table?
+\end{exercise}
+
+\begin{exercise}[]{}
+    How many subsets are there of the set $\{1, 2, \dots, n\} =: [n]$? How many are of even size?
+\end{exercise}
+
+\begin{exercise}[]{}
+    There are $2n$ people at a party. How many ways can the $2n$ people split into $n$ pairs? 
+\end{exercise}
+
+\begin{exercise}[]{}
+    A robot is placed on the bottom left of an $n \times n$ chessboard. The robot has two moves, go vertically up one square or 
+    horizontally along (to the right) one square. How many sequences of moves can the robot make to get to the top right square?
+\end{exercise}
+
+\newpage
+
+\subsection{Binomial Coefficients}
+
+\begin{lemma}[]{addition formula}
+    Let $n \in \mathbb{N}$ and $1 \leq k \leq n$. The identity \[\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}\] holds.
+\end{lemma}
+
+\begin{proof}[Proof 1]
+    A simple algebraic verification works, I leave this to the reader.
+\end{proof}
+
+We can also prove this identity with the technique of ``double counting''. Intuitively, this is just saying that if we can count things in two 
+ways they must be equal. For example, if we had an $n \times n$ grid full of numbers, we could count the sum of all the numbers by summing along 
+the rows or the columns. For certain selections of numbers, this can yield interesting equalities.  
+
+\begin{proof}[Proof 2]
+    We count the $k$-subsets of $[n]$ in two ways. First, all at once, getting $\binom{n}{k}$ such sets. Secondly, by considering seperately the 
+    cases when $1$ is in our subset and isn't. This gives $\binom{n-1}{k-1}$ choices with $1$ and $\binom{n-1}{k}$ choices without, giving us the 
+    desired equality. 
+\end{proof}
+
+
+\begin{theorem}[]{binomial theorem}
+    For all integers $n \geq 0$ and $x, y \in \mathbb{C}$, one has
+    \[(x + y)^n = \sum_{k=0}^n \binom{n}{k}x^ky^{n-k}\]
+\end{theorem}
+
+\begin{proof}[Proof 1]
+    We first use a straight forward induction argument. Observe, assuming the hypothesis for some $n \geq 0$ (and noting it trivially holds for $n=0$),
+    \begin{align*}
+        (x+y)^{n+1} &= (x+y)(x+y)^n \\
+        &= (x+y)\sum_{k=0}^n \binom{n}{k}x^k y^{n-k} \\
+        &= \sum_{k=0}^n \binom{n}{k}x^{k+1}y^{n-k} + \sum_{k=0}^n \binom{n}{k}x^k y^{n-k+1} \\
+        &= \sum_{k=0}^{n+1} \left(\binom{n}{k-1} + \binom{n}{k}\right)x^ky^{n - k + 1} \qquad \qquad (\dagger)\\
+        &= \sum_{k=0}^{n+1}\binom{n+1}{k}x^ky^{(n+1)-k}
+    \end{align*}
+    where $(\dagger)$ follows from an index shift ($k \to k-1$) and defining $\binom{n}{k} := 0$ for $k > n$ or $k < 0$.
+\end{proof}
+
+As before, we can double count ourselves a proof of this theorem. 
+
+\begin{proof}[Proof 2]
+
+\end{proof}
+
+As an immediate corollary we have the following.
+
+\begin{corollary}[]{sum and alternating sum of binomial coefficients}
+    \[\sum_{k=0}^n \binom{n}{k} = 2^n \qquad \text{and} \qquad \sum_{k=0}^n (-1)^k \binom{n}{k} = 0\]
+\end{corollary}
+
+\begin{proof}[Proof 1]
+    Take $x=y=1$ and $x=1, y=-1$ in the Binomial Theorem. 
+\end{proof}
+
+We may also take a more combinatorial approach to proving these identities. 
+
+\begin{proof}[Proof 2]
+    There are $2^n$ subsets of $[n]$ by counting directly (see exercise 1.2) and by counting each of the subsets size $k$ in groups we get 
+    $\sum_{k=0}^n \binom{n}{k}$, giving the first equivalence. For the second, note there are an equal number of odd and even subsets of $[n]$ 
+    (also exercise 1.2) so we have 
+    \[\sum_{k=0}^n (-1)^k \binom{n}{k} = \sum_{k=0}^n\sum_{k=0, 2 \mid k}^n \binom{n}{k} - \sum_{k=0, 2 \mid k}^{n} \binom{n}{k} = 0\]
+    giving the latter equivalence.
+\end{proof}
+
+\subsection*{Exercises}
+
+\begin{exercise}[]{}
+    How many words length $n$ can be formed from an alphabet of $\ell$ letters $\mathcal{A} = \{A_1, \dots, A_\ell\}$ such that the first letter 
+    $A_1$ occurs an even number of times?
+\end{exercise}
+
+\subsection{Additional Problems}
+
+\newpage
+
+\section{The Probabilistic Method}
+
+
+
+\subsection{}
+
+
+
+\newpage
+
+\section{Solutions}
+
+Here I list the exercise solutions in a random order. I will store which exercises have a solution in the README of this repository. 
+
+\end{document}
