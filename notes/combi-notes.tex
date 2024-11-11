@@ -234,7 +234,6 @@
 \setcounter{problemcount}{1}
 \setcounter{exercisecount}{1}
 
-
 In combinatorics we are concerned with counting the number of objects from a collection. For example, we may count the positive integers divisible
 by $3$ that are less than $1000$. Here the objects are positive integers are the objects and the collection is those objects that are both divisible 
 by $3$ and less than $1000$. \\
@@ -246,8 +245,10 @@ As a set is just is collection of objects, we will often phrase things set theor
 % Count boxes individually over naturals
 
 To begin counting anything interesting, we'll need the following principles. The first two let us count things inductively (e.g. counting 
-wine bottles by counting in threes or counting the number of wine $\&$ cheese pairings by multiplying the number of wine bottles and the 
-number of cheeses). The final simply says it doesn't matter what order we count each element (e.g. wine bottle) in.  
+the number of wines by counting in threes or counting the number of wine $\&$ cheese pairings by counting the wines and the cheeses). 
+The final simply says it doesn't matter what order we count each element (e.g. wine) in. These are essentially 
+common sense principles, and you have certainly used these in your day to day life. Regardless, I will prove these. 
+That way these notes are built on a rigorous set theoretic basis.
 
 \begin{theorem}[]{addition principle}
     Let $n \in \mathbb{N}$. Let $A_1, \dots, A_n$ be finite sets. One has\footnote{$A_1, \dots, A_n$ are said to be disjoint if 
@@ -300,7 +301,7 @@ With just these principles, we can count all the following quantities.
 \begin{proof}[Solution]
     To count the number of words with repetitions allowed, we sample with replacement to get
     \[\underbrace{n \times \cdots \times n}_{k \text{ times}} = n^k\]
-    $k$-words (or $k$-sequences) on $n$ symbols. \\
+    $k$-words (or $k$-sequences or $k$-tuples) on $n$ symbols by the multiplication principle. \\
 \end{proof}
 
 \begin{problem}[]{$k$-words without repetitions}
@@ -310,28 +311,46 @@ With just these principles, we can count all the following quantities.
 \begin{proof}[Solution]
     For $k$-words without repetition, we sample without replacement for each letter to get
     \[n \times (n-1) \times \cdots \times (n-k+1) =: n^{\underline{k}}\]
-    $k$-words without repetition on $n$ symbols.\footnote{We call $n^{\underline{k}}$ the falling factorial of $n$}
+    $k$-words without repetition on $n$ symbols by the multiplication principle.\footnote{
+        We call $n^{\underline{k}}$ the falling factorial of $n$}
 \end{proof}
 
-If we were to consider words of length $n$ on $n$ symbols without repetition, then we would simply be {\it permuting} (i.e. reordering) the 
-$n$ symbols. Hence we have $n \times (n-1) \times \cdots \times 1 =: n!$ {\it permutations} on $n$ symbols. Using this notation we have 
-$n^{\underline{k}} = n!/(n-k)!$. From this, we have the following result.
+Note a word is just a $k$-tuple of letters. Often times we will be able to phrase new objects in terms of the old 
+and we care a great deal about doing so. Learning combinatorics is quite different to other fields of mathematics. 
+Often, say in analysis, there will be a classic style of proof which will build the core results. Then we may 
+use these core results, in conjunction with some manipulation, to prove new results. Then these new results 
+to prove others and so on so forth, building a great theory of analysis. In combinatorics, often times the proof 
+of a new result will be entirely novel, depending on little known theory (outside of what an undergraduate 
+may have encountered) but will rely on a great onslaught of techniques, applied in a creative manner. Learning combinatorics
+is not learning definitions, lemmas, theorems and piecing them all together to prove related results. Instead it is 
+learning to apply, and more importantly spot ways of applying, core techniques to novel problems.  \\
+
+If we were to consider words of length $n$ on $n$ symbols without repetition, then we would be {\it permuting} (i.e. reordering/relabelling) 
+the $n$ symbols. Hence we have $n \times (n-1) \times \cdots \times 1 =: n!$ {\it permutations} on $n$ symbols. 
+Using this notation we have $n^{\underline{k}} = n!/(n-k)!$. \\ 
+
+Suppose we wish to count the number of subsets length $2$ on $n$ symbols. We would have $n(n-1)$ ways of choosing 
+$2$ unique elements (i.e. $2$-words without repetition), but we have counted the reorderings and hence overcounted 
+by doing this. We know, by the multiplication principle, that the number of reorderings times the number of ways 
+to select two unique elements will be $n(n-1)$, hence as there's $2! = 2$ ways to order $2$ symbols (as chosen 
+or reversed) we have $\frac{1}{2}n(n-1)$ subsets size $2$ of $[n]$. We extend this logic to count $k$-subsets. 
 
 \begin{problem}[]{$k$-subsets}
     How many subsets size $k$ are there of a set size $n$?
 \end{problem}
 
 \begin{proof}[Solution]
-    Let $x$ be the desired quantity. For each subset size $k$, we may reorder it's elements in $k!$ ways. If we care about the order of the elements 
-    in the subset, then the number of such subsets is precisely the number of $k$-words without repetition. Hence \[x \cdot k! = \frac{n!}{(n-k)!}\]
-    and we have counted the desired quantity.
+    Let $x$ be the desired quantity. For each subset size $k$, we may reorder it's elements in $k!$ ways and we 
+    may select $k$ unique elements by counting $k$-words on $n$ symbols without repetition, thus 
+    \[x \cdot k! = \frac{n!}{(n-k)!}\] and dividing by $k!$ gives $x = n!/k!(n-k)! =: \binom{n}{k}$
 \end{proof}
 
-Under the hood there we used the bijection principle, as we implicitly assumed (quite reasonably) the existence of a bijection from the 
-collection of subsets size $k$ where reordering matters and the $k$-words on $n$ symbols. \\
+We call $\binom{n}{k}$ the {\it binomial coefficient}, and would say this as ``$n$ choose $k$'' (as this counts the ways of 
+choosing $k$ things from $n$ things). We will dedicate an entire section (in fact, next section) to these. \\ 
 
-We call $\binom{n}{k} := \frac{n!}{k!(n-k)!}$ the {\it binomial coefficient}, and would say this as ``$n$ choose $k$''. We will dedicate an 
-entire section (in fact, next section) to these. \\ 
+In this next problem we will first encounter the idea of ``stars and bars'' counting, which gives us a way of counting 
+the ways to group $n$ indistinguishable objects into $k$ groups. This has many novel uses, like the one we're 
+about to encounter. 
 
 \begin{problem}[]{$k$-multisubsets}
     How many multisubsets\footnote{a multiset is a set that allows repetition, see https://en.wikipedia.org/wiki/Multiset} of size $k$ are there
@@ -374,7 +393,7 @@ entire section (in fact, next section) to these. \\
 \end{exercise}
 
 \begin{exercise}[]{}
-    How many subsets are there of the set $\{1, 2, \dots, n\} =: [n]$? How many are of even size?
+    How many subsets are there of the set $\{1, 2, \dots, n\} =: [n]$? How many are of even size? 
 \end{exercise}
 
 \begin{exercise}[]{}
@@ -492,6 +511,29 @@ THINGS TO ADD:
 \item HOCKEYSTICK LEMMA 
 \end{itemize}
 
+\begin{proposition}[]{Vandermonde's Identity}
+    Fix $n, a, b, \in \mathbb{N}$. Then 
+    \[\sum_{k=0}^n \binom{a}{k}\binom{b}{n-k} = \binom{a + b}{n}\]
+\end{proposition}
+
+As it this point you'd expect, we have two proofs. One algebraic, one via double counting. The motivation for this 
+first proof comes from the fact we are taking a sum of the form $\sum_{k=0}^n a_kb_{n-k}$, which should remind us 
+of the multiplication of polynomials. 
+
+\begin{proof}[Proof 1]
+
+\end{proof}
+
+A nice way to think about this double counting proof is to count the ways of forming a commitee of $n$ people from 
+$a$ boys and $b$ girls, choosing $k$ boys at a time.
+
+\begin{proof}[Proof 2]
+    We count the number of ways to choose subsets size $n$ from $[a+b]$ in two ways. The first, directly, gives 
+    $\binom{a+b}{n}$ choices. The second, is by counting the number of ways to choose such a subset with exactly 
+    $0 \leq k \leq n$ elements in $[a]$. We have $\binom{a}{k}$ ways of choosing the $k$ elements in $[a]$, and 
+    $\binom{b}{n-k}$ ways of choosing the remaining $n-k$ elements from $[a+b] \setminus [a]$. Thus, summing over 
+    $0 \leq k \leq n$ we obtain the desired equality.
+\end{proof}
 
 \subsection*{Exercises}
 
@@ -509,19 +551,23 @@ out this common-sense principle allows us to discover many, many, combinatorial 
     Given a set $X$ of size $n$, any partition of $X$ into $m < n$ subsets $X_1, \dots, X_m$ must have at least one $X_i$ with $|X_i| > 1$. 
 \end{theorem}
 
+We prove this with the following simple contradiction. 
+
 \begin{proof}
     Suppose each $|X_i| \leq 1$, then $|X| = |\cup_{i=1}^m X_i| = \sum_{i=1}^m |X_i| \leq m < n$. Absurd!
 \end{proof}
 
 We can slightly better than this. What if my containers can fit $2$ pigeons and I only have $2$ this time. Then I still can't fit my pigeons 
-into my containers. We make this rigorous as follows. 
+into my containers. Formally, 
 
 \begin{theorem}[]{full pigeonhole principle}
-    Given a set $X$ of size $n = km+1$, any partition of $X$ into $m$ subsets $X_1, \dots, X_m$ must have at least one $X_i$ with $|X_i| > k$
+    Given a set $X$ of size $n = km+1$, any partition of $X$ into $m$ subsets $X_1, \dots, X_m$ must have at least one $X_i$ with $|X_i| > k$.
 \end{theorem}
 
+Another simple, almost identical, contradiction will kill this. 
+
 \begin{proof}
-    Same idea.
+    Suppose each $|X_i| \leq k$, then $|X| = |\cup_{i=1}^m X_i| = \sum_{i=1}^m |X_i| \leq km < n$. Absurd!
 \end{proof}
 
 We also have a infinite pigeonhole principle. If I can only fit a finite number of pigeons into each container then, assuming I only have 
@@ -532,8 +578,20 @@ finitely many containers, I cannot fit an infinite number of pigeons into my con
     cardinality. 
 \end{theorem}
 
+Again, a simple contradiction will prove this.
+
 \begin{proof}
-    Guess :)
+    Suppose each $|X_i| = n_i < \infty$. Then $|X| = |\cup_{i}^m X_i| = \sum_{i=1}^m |X_i| 
+    = \prod_{i=1}^m n_i < \infty$. Absurd!
+\end{proof}
+
+\begin{problem}[]{monotone subsequences}
+    How large must a sequence of distinct real numbers be to guarantee the existence of a monotone subsequence 
+    size $n + 1$, $n \in \mathbb{N}$? 
+\end{problem}
+
+\begin{proof}[Solution]
+
 \end{proof}
 
 \subsubsection*{Exercises}
@@ -544,6 +602,101 @@ finitely many containers, I cannot fit an infinite number of pigeons into my con
 
 It is often much easier to count how many objects have properties $A$ AND $B$ than $A$ OR $B$. Thankfully we have the following principle to 
 relate the two.
+
+\begin{proposition}[]{2 variable inclusion exclusion principle}
+    Let $A$ and $B$ be finite sets. Then, 
+    \[|A \cup B| = |A| + |B| - |A \cap B|\]    
+\end{proposition}
+
+For an intuitive argument, just draw a venn diagram. To find the count $A \cup B$ we can count the entire circles
+of $A$ and $B$ individually, but when doing this we count the $A \cap B$ section twice so we must subtract off one 
+lot of it. \\
+
+We prove this by showing for each $x \in A \cup B$, $x$ is counted exactly once in the RHS. 
+
+\begin{proof}
+    Write $|A \cup B| = \sum_{x \in A \cup B}1$.  WLOG take $x \in A$, then either $x \in B$ or $x \not\in B$. In the former 
+    case, $x \in A \cap B$ gives a count of exactly $1$ on the RHS for $x$ and in the latter case $x \not\in A \cap B$ 
+    affirms the same result. Hence $|A| + |B| - |A \cap B| = \sum_{x \in A \cup B}1 = |A \cup B|$. 
+\end{proof}
+
+It turns out this property can be generalised for $n$ finite sets.
+
+\begin{theorem}[]{inclusion exclusion principle}
+    Let $n \in \mathbb{N}$ and $A_1, \dots, A_n$ be finite sets. Then, 
+    \[\left|\bigcup_{i=1}^n A_i\right| = \sum_{\ell = 1}^n (-1)^{\ell-1}\sum_{I \subseteq [n], |I| = \ell} \left|\bigcap_{i \in I}A_i\right|\]
+\end{theorem}
+
+We have two proofs for this. A bashy induction will work, but there is also a clever little trick we can do with indicator functions. 
+
+\begin{proof}[Proof 1]
+    We work via induction. 
+\end{proof}
+
+\begin{proof}[Proof 2]
+    Suppose (reasonably) that all of our subsets lie in some space $\Omega$ and denote $A^c := \Omega \setminus A$ for 
+    $A \subseteq \Omega$. Then, 
+    \[{\bf 1}\left[\bigcup_{i=1}^n A_i\right] = {\bf 1}\left[\left(\bigcap_{i=1}^n A_i^c\right)^c\right]
+    = 1 - {\bf 1}\left[\bigcap_{i=1}^n A_i^c\right] = 1 - \prod_{i=1}^n (1 - {\bf 1}[A_i])\]
+    Where ${\bf 1}[A] = 1$ if $x \in A$ and $0$ elsewhere (we call this the indicator function). Now, expanding the 
+    product we see 
+    \[{\bf 1}\left[\bigcup_{i=1}^n A_i\right] 
+    = \sum_{\ell = 1}^n \sum_{I \subseteq [n], \\ |I| = \ell} \, \prod_{i \in I} (- {\bf 1}[A_i])\] 
+    which, summing both sides over $x \in \Omega$, gives the result.
+\end{proof}
+
+Recall (see any elementary number theory text) that for primes $p, q$ and $n \in \mathbb{N}$, one has 
+$p, q \mid n \Leftrightarrow pq \mid n$. Thus, it is easy to count how many naturals below $n$ are divisible by $p$ and $q$ 
+(simply those divisible by $pq$), and by the inclusion exclusion principle it must also be easy to count how many 
+naturals below $n$ are divisible by $p$ or $q$. \\
+
+Recall (again, see any elementary number theory text) that {\it Euler's totient function} $\phi: \mathbb{N} \to \mathbb{N}$
+has $\phi(n) = |\{1 \leq i \leq n : \text{gcd}(i, n) = 1\}|$. That is, $\phi$ counts the number of integers at most $n$ 
+which are coprime to $n$. We will count this quantity directly, working with the reasoning outlined above.
+
+\begin{proposition}[]{explicit form of Euler's $\phi$-function}
+    Let $n \in \mathbb{N}$. Then, letting $\phi$ be Euler's totient function, 
+    \[\phi(n) = n \! \! \! \prod_{\substack{p \mid n, \\ p \text{ prime}}} \! \! \! \left(1 - \frac{1}{p}\right)\]
+\end{proposition}
+
+\begin{proof}
+    Factorise $n = p_1^{\ell_1} \cdots p_k^{\ell_k}$ into primes. Then we have $1 \leq x \leq n$ coprime to $n$ 
+    if and only if $p_1, \dots, p_k \nmid x$. Define $A_p := \{1 \leq x \leq n : p \mid x\} \subseteq [n]$. 
+    By the inclusion exclusion principle we may compute, where compliments are taken with respect to $[n]$, 
+    \begin{align*}
+        \phi(n) &= \left|\bigcap_{i=1}^kA_{p_i}^c\right| = n - \left|\bigcup_{i=1}^k A_{p_i}\right| \tag{1}\\
+        &= n - \sum_{m = 1}^k (-1)^{m-1} \sum_{I \subset [k], |I| = m}\left|\bigcap_{i \in I}A_{p_i}\right| \tag{2}\\
+        &= n - \sum_{m = 1}^k (-1)^{m-1} \sum_{I \subset [k], |I| = m}\frac{n}{\prod_{i \in I}p_i} \tag{3}\\
+        &= n\sum_{m = 0}^k (-1)^{m} \sum_{I \subset [k], |I| = m}\frac{1}{\prod_{i \in I}p_i} 
+        = n\prod_{p \mid n}\left(1 - \frac{1}{p}\right)
+    \end{align*}
+    Where in $(1)$ we used DeMorgan's laws, $(2)$ the inclusion exclusion principle and in $(3)$ the fact that 
+    $|\cap_{p \in P}A_p| = n/\prod_{p \in P}$ when $p \in P$ are primes dividing $n$ (easily seen with 
+    $pq \mid n \Leftrightarrow p,q \mid n$).
+\end{proof}
+
+We can also use the inclusion exclusion principles to count the number of permutations of $[n]$ with no fixed point, 
+the so called {\it dearrangements} of $[n]$. A fixed point of a permutation $\pi:[n] \to [n]$ is simply an 
+$x \in [n]$ with $\pi(x) = x$. 
+
+\begin{proposition}[]{dearrangements}
+    The number of permutations of $[n]$ with no fixed point is \[n!\sum_{k = 0}^n \frac{(-1)^k}{k!}\]
+\end{proposition}
+
+\begin{proof}
+    This is another direct application of the inclusion exclusion principle. Let $A_i$ be the set of permutations 
+    on $[n]$ with $i$ a fixed point. Then we compute
+    \[
+        \left|\bigcap_{i=1}^n A_i^c\right| = n! - \left|\bigcup_{i = 1}^n A_i\right| = n! - \sum_{k=1}^n
+        \sum_{I \subset [n], |I| = k}\left|\bigcap_{i \in I}A_i\right| = n! - \sum_{k=1}^n (-1)^{k-1}\binom{n}{k}(n-k)! 
+        = n! \sum_{k=0}^n \frac{(-1)^k}{k!}
+    \]
+    using the fact there are $\binom{n}{k}$ subsets $I \subseteq [n]$ of size $k$ and $(n-k)!$ permutations 
+    with $k$ elements fixed. 
+\end{proof}
+
+If we take the limit $n \to \infty$, we see that the probability of a (uniformly) random permutation of $[n]$ having
+no fixed points tends to $1/e$. 
 
 \newpage
 
