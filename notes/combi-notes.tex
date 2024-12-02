@@ -29,33 +29,9 @@
 \newcommand{\institution}{Department of Mathematical Sciences, The University of Bath}
 \newcommand{\keywords}{Combinatorics, Probability}
 
-\newcounter{definitioncount} % tcolorbox counter, for ease of self-reference
-\newcounter{lemmacount}
-\newcounter{examplecount}
-\newcounter{theoremcount}
-\newcounter{propositioncount}
-\newcounter{corollarycount}
-\newcounter{remarkcount}
-\newcounter{problemcount}
-\newcounter{exercisecount}
-\counterwithin{corollarycount}{section}
-\counterwithin{propositioncount}{section}
-\counterwithin{remarkcount}{section}
-\counterwithin{theoremcount}{section}
-\counterwithin{examplecount}{section}
-\counterwithin{lemmacount}{section}
-\counterwithin{definitioncount}{section}
-\counterwithin{problemcount}{section}
-\counterwithin{exercisecount}{section}
-\renewcommand{\thecorollarycount}{\thesection.\arabic{corollarycount}}
-\renewcommand{\thepropositioncount}{\thesection.\arabic{propositioncount}}
-\renewcommand{\theremarkcount}{\thesection.\arabic{remarkcount}}
-\renewcommand{\thetheoremcount}{\thesection.\arabic{theoremcount}}
-\renewcommand{\theexamplecount}{\thesection.\arabic{examplecount}}
-\renewcommand{\thelemmacount}{\thesection.\arabic{lemmacount}}
-\renewcommand{\thedefinitioncount}{\thesection.\arabic{definitioncount}}
-\renewcommand{\theproblemcount}{\thesection.\arabic{problemcount}}
-\renewcommand{\theexercisecount}{\thesection.\arabic{exercisecount}}
+\newcounter{statementcount}
+\counterwithin{statementcount}{subsection}
+\renewcommand{\thestatementcount}{\arabic{statementcount}}
 \newcounter{claimcount} % Used for proof with lots of claims
 
 \newtcolorbox{definition}[2][auto counter, number within=section]{
@@ -63,8 +39,8 @@
   colframe=black!50!white, 
   fonttitle=\bfseries, 
   coltitle=black,
-  title=Definition \thedefinitioncount $\:$ (#2), 
-  before upper = \refstepcounter{definitioncount},
+  title=Definition \thestatementcount $\:$ (#2), 
+  before upper = \refstepcounter{statementcount},
   #1, % Optional params
 }
 
@@ -73,8 +49,8 @@
   colframe=blue!50!white, 
   fonttitle=\bfseries, 
   coltitle=black, 
-  title=Lemma \thelemmacount $\:$ (#2),
-  before upper = \refstepcounter{lemmacount} 
+  title=Lemma \thestatementcount $\:$ (#2),
+  before upper = \refstepcounter{statementcount} 
   #1, % Optional params
 }
 
@@ -83,8 +59,8 @@
   colframe=green!50!white, 
   fonttitle=\bfseries, 
   coltitle=black, 
-  title=Example \theexamplecount $\:$ (#2), 
-  before upper = \refstepcounter{examplecount}
+  title=Example \thestatementcount $\:$ (#2), 
+  before upper = \refstepcounter{statementcount}
   #1, % Optional params
 }
 
@@ -93,8 +69,8 @@
   colframe=purple!50!white, 
   fonttitle=\bfseries, 
   coltitle=black, 
-  title=Problem \theproblemcount $\:$ (#2), 
-  before upper = \refstepcounter{problemcount}
+  title=Problem \thestatementcount $\:$ (#2), 
+  before upper = \refstepcounter{statementcount}
   #1, % Optional params
 }
 
@@ -103,8 +79,8 @@
   colframe=red!50!white, 
   fonttitle=\bfseries, 
   coltitle=black, 
-  title=Theorem \thetheoremcount $\:$ (#2), 
-  before upper = \refstepcounter{theoremcount},
+  title=Theorem \thestatementcount $\:$ (#2), 
+  before upper = \refstepcounter{statementcount},
   #1, % Optional params
 }
 
@@ -113,8 +89,8 @@
   colframe=purple!50!white, 
   fonttitle=\bfseries, 
   coltitle=black, 
-  title=Proposition \thepropositioncount $\:$ (#2), 
-  before upper = \refstepcounter{propositioncount},
+  title=Proposition \thestatementcount $\:$ (#2), 
+  before upper = \refstepcounter{statementcount},
   #1, % Optional params
 }
 
@@ -123,8 +99,8 @@
   colframe=yellow!50!white, 
   fonttitle=\bfseries, 
   coltitle=black, 
-  title=Corollary \thecorollarycount $\:$ (#2),
-  before upper = \refstepcounter{corollarycount}, 
+  title=Corollary \thestatementcount $\:$ (#2),
+  before upper = \refstepcounter{statementcount}, 
   #1, % Optional params
 }
 
@@ -133,8 +109,8 @@
   colframe=black!50!white, 
   fonttitle=\bfseries, 
   coltitle=black, 
-  title=Remark \theremarkcount $\:$ (#2),
-  before upper = \refstepcounter{remarkcount}, 
+  title=Remark \thestatementcount $\:$ (#2),
+  before upper = \refstepcounter{statementcount}, 
   #1, % Optional params
 }
 
@@ -143,8 +119,8 @@
   colframe=black!50!white, 
   fonttitle=\bfseries, 
   coltitle=black, 
-  title=Exercise \theexercisecount $\:$ #2,
-  before upper = \refstepcounter{exercisecount}, 
+  title=Exercise \thestatementcount $\:$ #2,
+  before upper = \refstepcounter{statementcount}, 
   #1, % Optional params
 }
 
@@ -224,15 +200,7 @@
 
 \section{Elementary Combinatorics}
 
-\setcounter{lemmacount}{1}
-\setcounter{examplecount}{1}
-\setcounter{theoremcount}{1}
-\setcounter{propositioncount}{1}
-\setcounter{corollarycount}{1}
-\setcounter{remarkcount}{1}
-\setcounter{definitioncount}{1}
-\setcounter{problemcount}{1}
-\setcounter{exercisecount}{1}
+\setcounter{statementcount}{1}
 
 In combinatorics we are concerned with counting the number of objects from a collection. For example, we may count the positive integers divisible
 by $3$ that are less than $1000$. Here the objects are positive integers are the objects and the collection is those objects that are both divisible 
@@ -244,11 +212,9 @@ As a set is just is collection of objects, we will often phrase things set theor
 
 % Count boxes individually over naturals
 
-To begin counting anything interesting, we'll need the following principles. The first two let us count things inductively (e.g. counting 
-the number of wines by counting in threes or counting the number of wine $\&$ cheese pairings by counting the wines and the cheeses). 
-The final simply says it doesn't matter what order we count each element (e.g. wine) in. These are essentially 
-common sense principles, and you have certainly used these in your day to day life. Regardless, I will prove these. 
-That way these notes are built on a rigorous set theoretic basis.
+To begin counting anything interesting, we'll need the following principles. The first two let us count things inductively, the final 
+says it doesn't matter what order we count each element in. These are essentially common sense principles. Regardless, being mathematicians, 
+we will prove these.
 
 \begin{theorem}[]{addition principle}
     Let $n \in \mathbb{N}$. Let $A_1, \dots, A_n$ be finite sets. One has\footnote{$A_1, \dots, A_n$ are said to be disjoint if 
@@ -280,7 +246,7 @@ This time we count terms in each slot recursively.
 \end{proof}
 
 \begin{theorem}[]{bijection principle}
-    Let $A$ and $B$ be sets. If there is a bijection\footnote{A bijection is a one-to-one mapping} $\pi: A \to B$ then $|A| = |B|$
+    Let $A$ and $B$ be sets. If there is a bijection (i.e. one-to-one mapping) $\pi: A \to B$ then $|A| = |B|$
 \end{theorem}
 
 \begin{proof}
@@ -315,25 +281,17 @@ With just these principles, we can count all the following quantities.
         We call $n^{\underline{k}}$ the falling factorial of $n$}
 \end{proof}
 
-Note a word is just a $k$-tuple of letters. Often times we will be able to phrase new objects in terms of the old 
-and we care a great deal about doing so. Learning combinatorics is quite different to other fields of mathematics. 
-Often, say in analysis, there will be a classic style of proof which will build the core results. Then we may 
-use these core results, in conjunction with some manipulation, to prove new results. Then these new results 
-to prove others and so on so forth, building a great theory of analysis. In combinatorics, often times the proof 
-of a new result will be entirely novel, depending on little known theory (outside of what an undergraduate 
-may have encountered) but will rely on a great onslaught of techniques, applied in a creative manner. Learning combinatorics
-is not learning definitions, lemmas, theorems and piecing them all together to prove related results. Instead it is 
-learning to apply, and more importantly spot ways of applying, core techniques to novel problems.  \\
-
 If we were to consider words of length $n$ on $n$ symbols without repetition, then we would be {\it permuting} (i.e. reordering/relabelling) 
 the $n$ symbols. Hence we have $n \times (n-1) \times \cdots \times 1 =: n!$ {\it permutations} on $n$ symbols. 
 Using this notation we have $n^{\underline{k}} = n!/(n-k)!$. \\ 
 
-Suppose we wish to count the number of subsets length $2$ on $n$ symbols. We would have $n(n-1)$ ways of choosing 
-$2$ unique elements (i.e. $2$-words without repetition), but we have counted the reorderings and hence overcounted 
-by doing this. We know, by the multiplication principle, that the number of reorderings times the number of ways 
-to select two unique elements will be $n(n-1)$, hence as there's $2! = 2$ ways to order $2$ symbols (as chosen 
-or reversed) we have $\frac{1}{2}n(n-1)$ subsets size $2$ of $[n]$. We extend this logic to count $k$-subsets. 
+Suppose we wish to count the number of subsets length $2$ on $n$ symbols. We have $n(n-1)$ ways of choosing 
+$2$ unique elements (i.e. $2$-words without repetition) and we have $2!$ ways of arranging the $2$ unique elements. 
+Hence, as each each $2$ element subset we count gives rise to $2!=2$ $2$-words, we may count these 
+and divide by $2$, obtaining $\frac{1}{2}n(n-1)$ unique $2$-element subsets\footnote{note this gives another proof 
+that the product of $2$ consequtive numbers is divisible by $2$, a somewhat nontrivial bridge between combinatorics 
+and number theory, and far from our last}. This method is often referred to as overcounting and correcting, and 
+gives us another way to count unknown objects with known objects.  
 
 \begin{problem}[]{$k$-subsets}
     How many subsets size $k$ are there of a set size $n$?
@@ -366,7 +324,7 @@ about to encounter.
     \[\ell^\prime_1 + \cdots + \ell^\prime_n = k + n\] Now write this as \[\underbrace{1 + \cdots + 1}_{\ell_1^\prime \text{ times}} + 
     \cdots + \underbrace{1 + \cdots + 1}_{\ell_n^\prime \text{ times}} = k + n\]
     We are tasked with dividing up the $k + n$ ones into $n$ groups, which can be done by insering $n-1$ stars in between two ones (not the edges
-    as we require $n$ nonempty collections of ones) to signifying the beginning of a new group. This gives $\binom{n-k-1}{n-1} = \binom{n-k-1}{k}$
+    as we require $n$ nonempty collections of ones) to indicate the beginning of a new group. This gives $\binom{n+k-1}{n-1} = \binom{n+k-1}{k}$
     possibilities.
 \end{proof}
 
@@ -388,8 +346,7 @@ about to encounter.
 \subsubsection*{Exercises}
 
 \begin{exercise}[]{}
-    In how many ways can $n$ people be seated at a circular table with $n$ seats, where we do not classify between seatings that can be 
-    obtained from one another by rotating the table?
+    In how many ways can $n$ people be seated at a circular table with $n$ seats.
 \end{exercise}
 
 \begin{exercise}[]{}
@@ -408,6 +365,11 @@ about to encounter.
 \newpage
 
 \subsection{Binomial Coefficients}
+
+\setcounter{statementcount}{1}
+
+We spend this section proving a myriad of identities concerning binomial coefficients, often providing both an algebraic proof and 
+a combinatorial proof.
 
 \begin{lemma}[]{addition formula}
     Let $n \in \mathbb{N}$ and $1 \leq k \leq n$. The identity \[\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}\] holds.
@@ -428,7 +390,7 @@ the rows or the columns. For certain selections of numbers, this can yield inter
 \end{proof}
 
 
-\begin{theorem}[]{binomial theorem}
+\begin{theorem}[]{Binomial theorem}
     For all integers $n \geq 0$ and $x, y \in \mathbb{C}$, one has
     \[(x + y)^n = \sum_{k=0}^n \binom{n}{k}x^ky^{n-k}\]
 \end{theorem}
@@ -450,7 +412,7 @@ As before, we can double count ourselves a proof of this theorem.
 \begin{proof}[Proof 2]
     Consider the coefficient of $x^ky^{n-k}$ of \[(x+y)^n = \overbrace{(x+y)\cdots(x+y)}^{n \text{ times}}\] When computing this expansion, 
     we are multiplying exactly one of $x$ or $y$ from each $(x+y)$ term on the RHS. Our entire expansion will be the sum of all such choices. 
-    Thus, to compute the coefficient of $x^ky^{n-k}$ in $(x+y)^n$, it suffices to count the number of ways to choose exactly $k$ $x$s out the 
+    Thus, to compute the coefficient of $x^ky^{n-k}$ in $(x+y)^n$, it suffices to count the number of ways to choose exactly $k$ $x$'s out the 
     $n$ possible choices. This is clearly $\binom{n}{k}$ and hence the result follows. 
 \end{proof}
 
@@ -470,12 +432,11 @@ We may also take a more combinatorial approach to proving these identities.
     There are $2^n$ subsets of $[n]$ by counting directly (see exercise 1.2) and by counting each of the subsets size $k$ in groups we get 
     $\sum_{k=0}^n \binom{n}{k}$, giving the first equivalence. For the second, note there are an equal number of odd and even subsets of $[n]$ 
     (also exercise 1.2) so we have 
-    \[\sum_{k=0}^n (-1)^k \binom{n}{k} = \sum_{k=0}^n\sum_{k=0, 2 \mid k}^n \binom{n}{k} - \sum_{k=0, 2 \mid k}^{n} \binom{n}{k} = 0\]
+    \[\sum_{k=0}^n (-1)^k \binom{n}{k} = \sum_{k=0}^n\sum_{\substack{k=0, \\ 2 \mid k}}^n \binom{n}{k} - \sum_{\substack{k=0, \\ 2 \mid k}}^{n} \binom{n}{k} = 0\]
     giving the latter equivalence.
 \end{proof}
 
-Let us recall the following lemma from (elementary) complex analysis, concerning sums of powers of roots of unity. If you are not yet familiar 
-with these tools please skip the next lemma and problem.
+Let us recall the following lemma from (elementary) complex analysis, concerning sums of powers of roots of unity.
 
 \begin{lemma}[]{sums of powers of roots of unity}
     Let $1, \xi_1, \dots, \xi_{n-1}$ be the $n$-roots of unity, that is the solutions to $z^n = 1, z \in \mathbb{C}$. Then, one has 
@@ -487,10 +448,10 @@ with these tools please skip the next lemma and problem.
     \[1 + \sum_{j=1}^{n-1}\xi_j^\ell = n\] 
     Conversely, if $\ell = mn + r, m \in \mathbb{Z}, 0 < r < n$ then $\xi_j^\ell = \exp(2\pi i (mn+r)j/n) = \exp(2\pi i jr/n)$ and 
     \[1 + \sum_{j=1}^{n-1} \xi_j^\ell = \sum_{j=0}^{n-1}\left(\exp(2\pi i r/n)\right)^j = \frac{1 - \exp(2\pi i r)}{1 - \exp(2\pi i r/n)} = 0\]
-    where we used the standard result for the sum of a geometric series in equality 2. 
+    where we used the standard result for the sum of a geometric series in the second equality. 
 \end{proof}
 
-With this, we can prove the following result. Generalising further the previous problem. 
+With this we can solve the following problem, a generalisation of corollary 1.2.3.
 
 \begin{problem}[]{sums of binomial multiples}
     Compute the following quantity. 
@@ -502,26 +463,26 @@ With this, we can prove the following result. Generalising further the previous 
     we can deduce 
     \[\sum_{k=0}^{n}\binom{mn}{mk} = \sum_{k=0}^{mk}\binom{nm}{k}\left(\frac{1}{m}\sum_{\ell = 0}^{m-1}\xi_\ell^k\right) 
     = \frac{1}{m}\sum_{\ell = 0}^{m-1} \sum_{k=0}^{mn} \binom{mn}{k}\xi_i^k = \frac{1}{m}\sum_{\ell = 0}^{m-1} (1+\xi_\ell)^{mn}\]
-    The term of the RHS can be further simplified, I elect to leave it here. 
+    The RHS can be further simplified, I elect to leave it here. 
 \end{proof}
-
-THINGS TO ADD:
-\begin{itemize}
-\item VANDERMONDE'S
-\item HOCKEYSTICK LEMMA 
-\end{itemize}
 
 \begin{proposition}[]{Vandermonde's Identity}
     Fix $n, a, b, \in \mathbb{N}$. Then 
     \[\sum_{k=0}^n \binom{a}{k}\binom{b}{n-k} = \binom{a + b}{n}\]
 \end{proposition}
 
-As it this point you'd expect, we have two proofs. One algebraic, one via double counting. The motivation for this 
-first proof comes from the fact we are taking a sum of the form $\sum_{k=0}^n a_kb_{n-k}$, which should remind us 
-of the multiplication of polynomials. 
+We observe two proofs, one algebraic and one via double counting. \\ 
+
+The motivation for this first proof comes from the fact we are taking a sum of the form $\sum_{k=0}^n a_kb_{n-k}$, 
+which should remind us of the multiplication of polynomials. 
 
 \begin{proof}[Proof 1]
-
+    We work by comparing the coefficients of $(1+x)^{a+b} = (1+x)^a(1+x)^b$. By the Binomial theorem, one has
+    \[(1+x)^a (1+x)^b = \left(\sum_{k_1=0}^a \binom{a}{k_1}x^{k_1}\right)\left(\sum_{k_2=0}^b \binom{b}{n - k_2}x^{k_2}\right)
+    = \sum_{n=0}^{a+b}\left(\sum_{k=0}^n \binom{a}{k}\binom{b}{n-k}\right)\]
+    where the last equality comes from computing the polnomial multiplication. Now, applying the Binomial theorem again, see 
+    \[(1+x)^{a+b} = \sum_{n=0}^{a+b}\binom{a+b}{n}x^k\]
+    so by the comparing coefficients of these two polynomials we deduce the result.
 \end{proof}
 
 A nice way to think about this double counting proof is to count the ways of forming a commitee of $n$ people from 
@@ -535,6 +496,39 @@ $a$ boys and $b$ girls, choosing $k$ boys at a time.
     $0 \leq k \leq n$ we obtain the desired equality.
 \end{proof}
 
+\begin{proposition}[]{hockeystick lemma}
+    For $n, r \in \mathbb{N}$ with $n \geq r$, one has \[\sum_{k=r}^n \binom{k}{r} = \binom{n+1}{r+1}\]
+\end{proposition}
+
+As usual, there are plenty of ways of proving this. We'll do one algebraic and one combinatorial. 
+
+\begin{proof}[Proof 1]
+    We use the Binomial addition formula to transform our sum into a telescoping series. Observe, 
+    \begin{align*}
+        \sum_{k = r}^n \binom{k}{r} = \sum_{k=r}^n \left[\binom{k+1}{r+1} - \binom{k}{r+1}\right] 
+        = \sum_{k = r+1}^{n+1}\binom{k}{r+1} - \sum_{k = r}\binom{k}{r+1} = \binom{n+1}{r+1} - \binom{r}{r+1} 
+        = \binom{n+1}{r+1}
+    \end{align*}
+    where the first equality is a consequence of Lemma 1.2.1. 
+\end{proof}
+
+This next proof uses the so called ``stars and bars'' method that we encountered last chapter to count the 
+arrangements of $n$ indistinguishable balls into $k$ distinguishable boxes. 
+
+\begin{proof}[Proof 2]
+    We work by double counting the arrangements of $n$ indistinguishable red balls into $k$ 
+    indistinguishable blue balls into $k$ distinguishable boxes. By ``stars and bars'' we have 
+    \[\binom{n+k-1}{k-1}\]
+    such arrangements. Now instead, label the boxes $1, \dots, k$ and count the arrangements with $0 \leq i \leq k$ 
+    blue balls in box $1$. There are 
+    \[\binom{(n+k-2) - i}{k-2}\]
+    such arrangements for each $i$ and hence 
+    \[\binom{n+k-1}{k-1} = \sum_{i = 0}^k \binom{(n+k-2) - i}{k-2}\]
+    Taking $n^\prime = n + k - 2$ and $r = k-2$ we recover 
+    \[\binom{n^\prime+1}{r + 1} = \sum_{i=r}^{n^\prime}\binom{i}{r}\]
+    by reversing the order of summation, which as $k$ and $n$ were arbitrary concludes the proof.
+\end{proof}
+
 \subsection*{Exercises}
 
 \begin{exercise}[]{}
@@ -542,7 +536,22 @@ $a$ boys and $b$ girls, choosing $k$ boys at a time.
     $A_1$ occurs an even number of times?
 \end{exercise}
 
+\begin{exercise}[]{}
+    \begin{enumerate}[(i)]
+        \item Using induction, find another proof for the hockeystick lemma.
+        \item By assigning $n-k+1$ labels to the elements of $[n+1]$ or otherwise, find another double counting 
+        proof of the hockeystick lemma.
+    \end{enumerate} 
+\end{exercise}
+
+\begin{exercise}[]{} 
+    Compute \[\sum_{k=0}^n k\binom{n}{k} \quad \text{and} \quad \sum_{k=0}^n k^2\binom{n}{k}\] 
+    algebraically and combinatorially. Can you find a probabilistic proof? 
+\end{exercise}
+
 \subsection{The Pigeonhole Principle}
+
+\setcounter{statementcount}{1}
 
 If I have $5$ pigeons and $4$ containers, each only able to fit one pigeon, can I fit all the pigeons into my containers? Of course not! It turns 
 out this common-sense principle allows us to discover many, many, combinatorial facts$\dots$
@@ -557,14 +566,12 @@ We prove this with the following simple contradiction.
     Suppose each $|X_i| \leq 1$, then $|X| = |\cup_{i=1}^m X_i| = \sum_{i=1}^m |X_i| \leq m < n$. Absurd!
 \end{proof}
 
-We can slightly better than this. What if my containers can fit $2$ pigeons and I only have $2$ this time. Then I still can't fit my pigeons 
+We can do slightly better than this. What if my containers can fit $2$ pigeons and I only have $2$ this time. Then I still can't fit my pigeons 
 into my containers. Formally, 
 
 \begin{theorem}[]{full pigeonhole principle}
     Given a set $X$ of size $n = km+1$, any partition of $X$ into $m$ subsets $X_1, \dots, X_m$ must have at least one $X_i$ with $|X_i| > k$.
 \end{theorem}
-
-Another simple, almost identical, contradiction will kill this. 
 
 \begin{proof}
     Suppose each $|X_i| \leq k$, then $|X| = |\cup_{i=1}^m X_i| = \sum_{i=1}^m |X_i| \leq km < n$. Absurd!
@@ -577,8 +584,6 @@ finitely many containers, I cannot fit an infinite number of pigeons into my con
     Given a set $X$ of infinite cardinality, any partition of $X$ into finitely many sets $X_1, \dots, X_m$ must have some $X_i$ also of infinite 
     cardinality. 
 \end{theorem}
-
-Again, a simple contradiction will prove this.
 
 \begin{proof}
     Suppose each $|X_i| = n_i < \infty$. Then $|X| = |\cup_{i}^m X_i| = \sum_{i=1}^m |X_i| 
@@ -599,6 +604,8 @@ Again, a simple contradiction will prove this.
 \newpage
 
 \subsection{The Principle of Inclusion-Exclusion}
+
+\setcounter{statementcount}{1}
 
 It is often much easier to count how many objects have properties $A$ AND $B$ than $A$ OR $B$. Thankfully we have the following principle to 
 relate the two.
@@ -630,12 +637,11 @@ It turns out this property can be generalised for $n$ finite sets.
 We have two proofs for this. A bashy induction will work, but there is also a clever little trick we can do with indicator functions. 
 
 \begin{proof}[Proof 1]
-    We work via induction. 
+    We work via induction$\dots$
 \end{proof}
 
 \begin{proof}[Proof 2]
-    Suppose (reasonably) that all of our subsets lie in some space $\Omega$ and denote $A^c := \Omega \setminus A$ for 
-    $A \subseteq \Omega$. Then, 
+    Suppose that all of our subsets lie in a space $\Omega$ and denote $A^c := \Omega \setminus A$ for $A \subseteq \Omega$. Then, 
     \[{\bf 1}\left[\bigcup_{i=1}^n A_i\right] = {\bf 1}\left[\left(\bigcap_{i=1}^n A_i^c\right)^c\right]
     = 1 - {\bf 1}\left[\bigcap_{i=1}^n A_i^c\right] = 1 - \prod_{i=1}^n (1 - {\bf 1}[A_i])\]
     Where ${\bf 1}[A] = 1$ if $x \in A$ and $0$ elsewhere (we call this the indicator function). Now, expanding the 
@@ -645,14 +651,14 @@ We have two proofs for this. A bashy induction will work, but there is also a cl
     which, summing both sides over $x \in \Omega$, gives the result.
 \end{proof}
 
-Recall (see any elementary number theory text) that for primes $p, q$ and $n \in \mathbb{N}$, one has 
-$p, q \mid n \Leftrightarrow pq \mid n$. Thus, it is easy to count how many naturals below $n$ are divisible by $p$ and $q$ 
-(simply those divisible by $pq$), and by the inclusion exclusion principle it must also be easy to count how many 
-naturals below $n$ are divisible by $p$ or $q$. \\
+We may count, for $n$ divisible by a prime $p$, the number of integers less than or equal to $n$ divisible by $p$ as $n/p$. 
+Recall  that for primes $p, q$ and $n \in \mathbb{N}$, one has $p, q \mid n \Leftrightarrow pq \mid n$. Thus, it is easy to count how 
+many naturals below $n$ are divisible by $p$ and $q$ (just biject), and by the inclusion exclusion principle it must also be easy to 
+count how many naturals below $n$ are divisible by $p$ or $q$. \\
 
-Recall (again, see any elementary number theory text) that {\it Euler's totient function} $\phi: \mathbb{N} \to \mathbb{N}$
-has $\phi(n) = |\{1 \leq i \leq n : \text{gcd}(i, n) = 1\}|$. That is, $\phi$ counts the number of integers at most $n$ 
-which are coprime to $n$. We will count this quantity directly, working with the reasoning outlined above.
+Recall that {\it Euler's totient function} $\phi: \mathbb{N} \to \mathbb{N}$ has $\phi(n) = |\{1 \leq i \leq n : \text{gcd}(i, n) = 1\}|$. 
+That is, $\phi$ counts the number of integers at most $n$ which are coprime to $n$. We will count this quantity directly, working with 
+the reasoning outlined above.
 
 \begin{proposition}[]{explicit form of Euler's $\phi$-function}
     Let $n \in \mathbb{N}$. Then, letting $\phi$ be Euler's totient function, 
@@ -667,12 +673,13 @@ which are coprime to $n$. We will count this quantity directly, working with the
         \phi(n) &= \left|\bigcap_{i=1}^kA_{p_i}^c\right| = n - \left|\bigcup_{i=1}^k A_{p_i}\right| \tag{1}\\
         &= n - \sum_{m = 1}^k (-1)^{m-1} \sum_{I \subset [k], |I| = m}\left|\bigcap_{i \in I}A_{p_i}\right| \tag{2}\\
         &= n - \sum_{m = 1}^k (-1)^{m-1} \sum_{I \subset [k], |I| = m}\frac{n}{\prod_{i \in I}p_i} \tag{3}\\
-        &= n\sum_{m = 0}^k (-1)^{m} \sum_{I \subset [k], |I| = m}\frac{1}{\prod_{i \in I}p_i} 
+        &= n\sum_{m = 0}^k (-1)^{m} \sum_{I \subset [k], |I| = m}\frac{1}{\prod_{i \in I}p_i} \tag{4}
         = n\prod_{p \mid n}\left(1 - \frac{1}{p}\right)
     \end{align*}
-    Where in $(1)$ we used DeMorgan's laws, $(2)$ the inclusion exclusion principle and in $(3)$ the fact that 
+    Where in $(1)$ we used DeMorgan's laws, $(2)$ the inclusion exclusion principle, in $(3)$ the fact that 
     $|\cap_{p \in P}A_p| = n/\prod_{p \in P}$ when $p \in P$ are primes dividing $n$ (easily seen with 
-    $pq \mid n \Leftrightarrow p,q \mid n$).
+    $pq \mid n \Leftrightarrow p,q \mid n$) and in (4) the fact $\prod_{i \in I}(1-x_i) = \sum_{J \subseteq I}(-1)^{|J|}\prod_{j \in J}x_j$, 
+    where the empty product is defined as $1$. 
 \end{proof}
 
 We can also use the inclusion exclusion principles to count the number of permutations of $[n]$ with no fixed point, 
@@ -700,9 +707,17 @@ no fixed points tends to $1/e$.
 
 \newpage
 
-\subsection{Generating Functions}
+\subsection{Recursion I}
+
+\setcounter{statementcount}{1}
 
 \subsubsection*{Exercises}
+
+\newpage
+
+\subsection{Recursion II}
+
+\setcounter{statementcount}{1}
 
 \newpage 
 
@@ -716,9 +731,305 @@ no fixed points tends to $1/e$.
 
 \newpage
 
-\section{The Probabilistic Method}
+\section{Non-constructive Methods in Combinatorics}
 
-\subsection{Introducing the Probabilistic Method with Ramsey Bounds}
+\setcounter{statementcount}{1}
+
+\subsection{Introduction}
+
+In these notes we are primarily concerned with the probabilistic method. Towards the end we will touch on 
+some topological and algebraic methods. 
+
+Typically, the probabilistic method is used to prove the existence of a construction with desirable properties 
+without actually constructing it. We do this by showing it exists with some positive probability.   \\
+
+A simple tool for doing so is the following. 
+
+\begin{lemma}[]{a random variable must take its mean value}
+    Let $X$ be an integer-valued random variable. Then \[\mathbb{P}(X \geq \mathbb{E}[X]) > 0\]
+\end{lemma}
+
+\begin{proof}
+    Suppose $\mathbb{P}(X \geq \mathbb{E}[X]) = 0$. Then, 
+    \begin{align*}
+        \mathbb{E}[X] &= \sum_{x = - \infty}^{\mathbb{E}[X] - 1}x\mathbb{P}(X = x) + \sum_{x = \mathbb{E}[X]}^\infty 
+        x\mathbb{P}(X = x) \\ &\leq (\mathbb{E}[X] - 1)\sum_{x = - \infty}^{\mathbb{E}[X] - 1}\mathbb{P}(X = x) + 
+        \sum_{x = \mathbb{E}[X]}^\infty x\mathbb{P}(X \geq x) \\ &= (\mathbb{E}[X] - 1)\mathbb{P}(X \leq \mathbb{E}[X] - 1)
+        = \mathbb{E}[X] - 1
+    \end{align*}
+    Absurd!
+\end{proof}
+
+Clearly our argument works for any $X$ taking values on a countable set. A continuous analogue also exists. \\ 
+
+We can use this to prove any graph has a large bipartite subgraph. The idea will be to $2$-colour its vertices 
+uniformly, using the fact a bipartite subgraph is a graph where we can two colour the vertices such that 
+every edge has endpoints with distinct colours. 
+
+\begin{proposition}[]{large bipartite subgraph}
+    Every graph with $m$ edges has a bipartite subgraph with at least $m/2$ edges.
+\end{proposition}
+
+\begin{proof}
+    Let our graph be $G = G(V, E)$ and assign each vertex a colour from $\{1, 2\}$. Let $E^\prime \subseteq E$ be 
+    the set of edges with distinctly coloured endpoints. Then, enumerating $E = \{e_1, \dots, e_m\}$ and letting 
+    $A_i$ be the event edge $e_i$ has distinctly coloured endpoints, 
+    \[\mathbb{E}[|E^\prime|] = \mathbb{E}\left[\sum_{i = 1}^m{\bf 1}(A_i)\right] = \sum_{i=1}^m \mathbb{P}(A_i) = \frac{1}{2}m\]
+    via the linearity of expectations and the fact $\mathbb{E}[{\bf 1}(A)] = \mathbb{P}(A)$ for any event $A$, 
+    where ${\bf 1}(\cdot)$ is the indicator function\footnote{That is, ${\bf 1}(A) = 1$ where $A$ is true and $0$ elsewhere}. 
+    Hence, by our previous lemma 
+    \[\mathbb{P}(|E^\prime| \geq m/2) > 0\] 
+    and we have our large bipartite subgraph.
+\end{proof}
+
+Linearity of expectations as a tool is extremely prevelant in probabilistic combinatorics, so much so 
+we dedicate an entire section to its enumerable applications. \\ 
+
+\subsubsection{Lower Ramsey Bounds}
+
+\begin{definition}[]{Ramsey number}
+    Let $k, \ell \in \mathbb{N}$. Then the Ramsey number $R(k, \ell)$ is the smallest $n \in \mathbb{N}$ such that 
+    in every $2$-colouring of $K_n$ we have a monochromatic $K_k$ of colour or a monochromatic $K_\ell$ of colour 2.
+\end{definition}
+
+For example, one can prove $R(3,3) = 6$ with the Pidgeonhole principle. WLOG we can choose a vertex such that 
+$3$ of the edges from this vertex have colour $1$. Now consider the triangle formed by the edges connecting these $3$
+endpoints. If any one of the edges in this triangle have colour $1$ then we have a monochromatic triangle, if not 
+then we also have a monochromatic triangle, giving $R(3,3) \leq 6$. Then colour $K_5$ nicely to prove $R(3,3) > 5$. 
+
+\begin{remark}[]{a nice interpretation}
+    Proving $R(3,3) \geq 6$ is a classical olympiad problem, often stated as ``At a party with 
+    $6$ people, there are $3$ people that all know eachother or $3$ people that do not know one another.'' 
+\end{remark}
+
+Ramsey first proved that these numbers exist. 
+
+\begin{theorem}[]{Ramsey's Theorem - 1929}
+    For all $k, \ell \in \mathbb{N}$, $R(k, \ell)$ exists and is finite. 
+\end{theorem}
+
+\begin{proof}
+    Omitted. 
+\end{proof}
+
+Estimating the Ramsey number is a fundamental problem in Ramsey theory, a vast subfield of graph theory. We 
+will prove 3 quantitative lower bounds for the diagonal Ramsey number $R(k, k)$, each serving as an exhibition 
+of an important technique in probabilistic combinatorics. \\ 
+
+The first technique we use will be the so called union bound, often referred to by probability theorists as 
+Boole's inequality. 
+
+\begin{lemma}[]{union bound / Boole's inequality}
+    Let $A_1, \dots, A_n$ be events on a probability space $(\omega, \mathcal{F}, \mathbb{P})$. Then, 
+    \[\mathbb{P}\left(\bigcup_{i = 1}^n A_i\right) \leq \sum_{i = 1}^n \mathbb{P}(A_i)\]
+\end{lemma}
+
+We'll prove the $n=2$ case, which gives the $n \in \mathbb{N}$ case immediately by induction. 
+
+\begin{proof}
+    Write $A_1 \cup A_2 = (A_1 \setminus A_2) \cup (A_2 \setminus A_1)$ as a disjoint union, noting $A_i \setminus A_j 
+    \subseteq A_i$ for $i \neq j$. Then,
+    \[\mathbb{P}(A_1 \cup A_2) = \mathbb{P}(A_1 \setminus A_2) + \mathbb{P}(A_2 \setminus A_1) 
+    \leq \mathbb{P}(A_1) + \mathbb{P}(A_2)\] as required.
+\end{proof}
+
+Alternatively, the $2$ variable inclusion-exclusion principle gives this immediately. \\ 
+
+We may use this to bound unions from above, giving us a way to bound the probability of some ``bad'' event 
+$A_i$ from a set of ``bad'' events $A_1, \dots, A_n$ occuring. Erd\H{o}s used this methodology to obtain the 
+following diagonal Ramsey lower bound, one of the first known applications of the probabilistic method in combinatorics. 
+
+\begin{proposition}[]{Ramsey LB via union bound - Erd\H{o}s 1947}
+    If $\binom{n}{k}2^{1 - \binom{k}{2}} < 1$ then $R(k, k) > n$. 
+\end{proposition}
+
+We will consider random $2$-colourings of the edges of $K_n$, showing with positive probability if 
+$k$ satisfies $\binom{n}{k}2^{1 - \binom{k}{2}} < 1$ then $K_n$ has no monochromatic $K_k$. 
+
+\begin{proof}
+    Independently and uniformly $2$-colour the edges of $K_n$ at random. There are $\binom{n}{k}$ 
+    subgraphs isomorphic to $K_k$, and these are exactly the graphs obtained by taking the subgraph induced by 
+    keeping $k$ edges from $K_n$. Let $m = \binom{n}{k}$ and $A_1, \dots, A_{m}$ be the events these graphs are monochromatic. 
+    Then, 
+    \[\mathbb{P}\left(\bigcup_{i = 1}^{m}A_i\right) \leq \sum_{i = 1}^{m}\mathbb{P}(A_i) = 
+    \binom{n}{k} \times (2 \times 2^{- \binom{n}{k}})\]
+    so that, via DeMorgan's laws,
+    \[\binom{n}{k}2^{1 - \binom{k}{2}} < 1 \Longrightarrow \mathbb{P}\left(\bigcap_{i = 1}^{m}A_i^c\right) > 0\]
+    giving us a $2$-colouring of the edges of $K_n$ with no monochromatic $K_n$. 
+\end{proof}
+
+This bound doesn't, at first, tell us anything about the size of $k$ relative to $n$. To deduce this fact we'll 
+need to do some work with asymptotics.
+
+\begin{proposition}[]{quantitative Erd\H{o}s lower bound}
+    For $k \in \mathbb{N}$, 
+    \[R(k, k) > \left(\frac{1}{\sqrt{e}} + o(1)\right)k2^{k/2}\]
+\end{proposition}
+
+We will work with Stirling's approximation.
+
+\begin{proof}
+    I can't get it to bloody work :/
+\end{proof}
+
+The next approach we'll take is via the so called method of {\it alteration}. In this approach, generally,
+we start with a random construction, fix the undesirable features of said construction and prove our construction 
+still has an interesting size. This approach is so important we'll dedicate a whole section to it. \\ 
+
+In this application, as before, we'll take a $2$-colouring of the edges of $K_n$ independently and uniformly. This 
+time though, instead of just analysing these colourings, we'll turn them into graphs $K_X$ that certainly contain no 
+monochromatic $K_k$ and analyse the size of $X$. 
+
+\begin{proposition}[]{Ramsey LB via alteration - unknown}
+    For all $k, n \in \mathbb{N}$, $R(k,k) > n - \binom{n}{k}2^{1-\binom{k}{2}}$
+\end{proposition}
+
+\begin{proof}
+    $2$-colour the edges of the clique $K_n$ independently and uniformly at random. Iteratively delete a vertex 
+    from each monochromatic $K_k$. Let $m = \binom{n}{k}$ and let $A_1, \dots, A_m$ be the events the $i^\text{th}$ 
+    $k$-clique is monochromatic after the initial colouring (before the deletion of any vertices). Let $X$ be the 
+    number of vertices we delete during the deletion process. Then, 
+    \[\mathbb{E}[X] = \mathbb{E}\left[\sum_{i = 1}^m {\bf 1}(A_i)\right] = m\mathbb{P}(A_i) = \binom{n}{k}2^{1-\binom{k}{2}}\]
+    so, as we have $n - X$ vertices remaining after the alteration, we have 
+    \[\mathbb{P}\left(n - X \geq n - \binom{n}{k}2^{1-\binom{k}{2}}\right) > 0\]
+    i.e. a $2$-colouring of the edges of the clique size $n - \binom{n}{k}2^{1-\binom{k}{2}}$ containing no monochromatic 
+    $K_k$. 
+\end{proof}
+
+Notice, again we used linearity of expectations here, as well as lemma 2.1. This will often be the case in 
+alteration proofs. \\ 
+
+As before, we can optimise $n$ for fixed $k$ to gain a quantitative bound.
+
+\begin{proposition}[]{quantitative Ramsey LB via alteration}
+    \[R(k, k) > \left(\frac{1}{e} + o(1)\right)k2^{k/2}\]
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+Note this improves the Erd\H{o}s bound by a factor of $\frac{1}{\sqrt{e}}$. \\
+
+Now we introduce our third method, again, warranting its own section. The idea is that the so called ``bad'' events
+$A_1, \dots, A_n$ we want to avoid are often only weakly dependent, and we have a great bound for the probability 
+that none of the ``bad'' events occur in such a setup (courtesy of Lovas\'{z}).
+
+\begin{lemma}[]{Lovas\'{z} Local Lemma - random variable model}
+    Let $X_1, \dots, X_n$ be independent random variables. Let $B_1, \dots, B_m \subset [n]$ and, for each
+    $1 \leq i \leq m$, let $A_i$ be an event depending only on the random variables $\{X_j, j \in B_i\}$. \\ 
+    
+    If for each $i$, $B_i \cap B_j \neq \emptyset$ for at most $d$ other $B_j$'s and $\mathbb{P}(A_i) \leq 1/e(d+1)$ 
+    then with positive probability none of the $A_i$ occur. 
+\end{lemma}
+
+We will save the proof of this for our section dedicated to this lemma. \\
+
+Now lets use this to obtain another improvement on our Ramsey lower bound. As before we'll take random $2$-colourings 
+and consider the events $A_1, \dots, A_m$ where clique $i$ is monochromatic, but, observing the weak dependence 
+between these events (and letting the colour of the edges be our random variables) this makes a perfect candidate 
+for the Lovas\'{z} Local Lemma. 
+
+\begin{proposition}[]{Ramsey LB via LLL - Spencer 1977}
+    If $\left(\binom{k}{2}\binom{n}{k-2} + 1\right)2^{1 - \binom{k}{2}} < \frac{1}{e}$ then $R(k, k) > n$. 
+\end{proposition}
+
+\begin{proof}
+    $2$-Colour the edges of $K_n$ independently and uniformly at random, letting the colour of $1 \leq i \leq 
+    \binom{n}{2}=: N$ be the random variable $X_i$. Enumerate the $k$-cliques of $K_n$ as $G_1, \dots, G_M$ where 
+    $M := \binom{n}{k}$ and let $A_j: 1 \leq j \leq M$ be the event $G_i$ is monochromatic. Let 
+    $B_j \subset [N]: 1 \leq j \leq M$ be the edges of $G_i$. Clearly $A_i$ depends only on
+    the random variables $\{X_j : j \in B_i\}$. \\
+
+    Now $B_i \cap B_j \neq \emptyset$ exactly when $G_i$ and $G_j$ share at least one edge. This is equivalent 
+    (edges have two endpoints and two vertices make an edge!) to $G_i$ and $G_j$ sharing at least two vertices. 
+    Fixing $G_i$, we may count the number of $G_j$ satisfying this condition by counting the number of ways to 
+    choose $2$ vertices from $G_i$ (our shared vertices) and multiplying by the number of ways to choose the remaining 
+    $k-2$ vertices from the vertices of $K_n$ (noting we may choose from all $n$, as $B_i$ can share any number of 
+    vertices with $B_j$) giving us a candidate $d$ of 
+    \[d = \binom{k}{2}\binom{n}{k-2}\]
+    Now, as we've already seen, $\mathbb{P}(A_i) = 2^{1 - \binom{k}{2}}$, so to apply the Lovas\'{z} local lemma 
+    we need 
+    \[\binom{k}{2}\binom{n}{k-2}2^{1 - \binom{k}{2}} < \frac{1}{e}\]
+    If this inequality in $n$ and $k$ holds, we have with positive probability a colouring of the edges of $K_n$
+    with no monochromatic $k$-clique, and thus $R(k, k) > n$. 
+\end{proof}
+
+We may optimise one final time for $n$ in $k$ to get a quantitative bound.
+
+\begin{proposition}[]{quantitative Ramsey LB via LLL}
+    \[R(k,k) > \left(\frac{\sqrt{2}}{e} + o(1)\right)k2^{k/2}\]
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+This is improves our alteration bound by a factor of $\sqrt{2}$, and is currently the best known lower bound for 
+the diagonal Ramsey number. Philosophically, it is interesting to note that all three of these different techniques 
+only improve our lower bound by a constant factor. With these methods, we always obtain a $O(k2^{k/2})$ lower bound. \\
+
+We are very far from knowing the exact diagonal ramsey number. Recently$\dots$ (Campos upper bound exponential 
+dialogue via a kind of alteration). 
+
+\subsubsection{Set Systems}
+
+A {\it set system} is simply a family $\mathcal{F}$ of subsets of some space $X$. Often we take $X = [n]$. In 
+{\it extremal set theory} we are usually concerned with finding the maximal/minimal size of a set system that 
+has some desirable property. \\ 
+
+The first type of set system we study are the so called {\it antichains}. These are families that are pairwise 
+incomparable by containment, that is $\forall A \in \mathcal{F} \; \nexists B \in \mathcal{F}$ with $ A \subseteq B$. \\
+
+We will write $\binom{[n]}{k}$ for the family of $k$-element subsets of $[n]$. 
+
+\begin{claim}
+    The family $\binom{[n]}{k}$ is an antichain for any $0 \leq k \leq n$
+\end{claim}
+
+\begin{proof}
+    Suppose there are $k$ element subsets of $A, B \subseteq [n]$ with $A \subseteq B$. Then, as $|A| = k = |B|$ 
+    we have $A = B$ forced but, as our family is a set, its elements must be unique. Contradiction!
+\end{proof}
+
+The size of $\binom{[n]}{k}$ is $\binom{n}{k}$, which is maximised by taking $k = \lfloor n/2 \rfloor$. It turns 
+out the family $\binom{[n]}{\lfloor n/2 \rfloor}$ is our biggest antichain in $[n]$. 
+
+\begin{theorem}[]{Sperner's theorem - 1928}
+    If $\mathcal{F}$ is an antichain on $[n]$, then $|\mathcal{F}| \leq \binom{n}{\lfloor n/2 \rfloor}$
+\end{theorem}
+
+Rather than proving this we will prove a stronger result independently discovered by several mathematicians, 
+often referred to as the LYM inequality. 
+
+\begin{theorem}[]{LYM inequality - 1954/1963/1965/1966}
+    If $\mathcal{F}$ is an antichain on $[n]$ then 
+    \[\sum_{A \in \mathcal{F}}\binom{n}{|A|}^{-1} \leq 1\]
+\end{theorem}
+
+Note this immediately uncovers Sperner's theorem as $\binom{n}{|A|} \leq \binom{n}{\lfloor n/2\rfloor}$. \\
+
+The idea will be to consider random permutations of $n$ and the canonical chain generated from this permutation. 
+If we have two events in said canonical chain we no longer have an anti-chain, so an easy disjoint probabilities 
+sum arises. 
+
+\begin{proof}
+    Choose a permutation $\sigma$ or $[n]$ uniformly at random and consider the canonical chain 
+    \[\mathcal{S}(\sigma) = \{\emptyset, \{\sigma(1)\}, \{\sigma(1), \sigma(2)\}, \dots, \{\sigma(1), \dots, \sigma(n)\}\}\]
+    For subsets $A \subset [n]$ let $E_A$ be the event $A \in \mathcal{S}(\sigma)$. Then we have $A \in \mathcal{S}(\sigma)$ 
+    if and only if the elements of $A$ are exactly the first $|A|$ elements in the listed permutation 
+    $(\sigma(1), \dots, \sigma(|A|))$ up to reordering, leaving the remaining $n - |A|$ elements of $[n]$ to be the 
+    remaining elements $(\sigma(|A| + 1), \dots, \sigma(n))$ up to reordering. Thus, as we have $|A|!(n-|A|!)$ 
+    such permutations, we have \[\mathbb{P}(E_A) = \frac{|A|!(n-|A|)!}{n!} = \binom{n}{|A|}^{-1}\]
+    Now suppose $\mathcal{F}$ is an antichain. Then clearly we have at most one $A \in \mathcal{F}$ with 
+    $A \in \mathcal{S}(\sigma)$, hence $\{E_A : A \in \mathcal{F}\}$ are disjoint events and we have 
+    \[1 \geq \mathbb{P}\left(\bigcup_{A \in \mathcal{F}}E_A\right) = \sum_{A \in \mathcal{F}}\mathbb{P}(E_A)
+    = \sum_{A \in \mathcal{F}}\binom{n}{|A|}^{-1}\]
+\end{proof}
+
+Here our probabilistic tool was actually just an axiom of measure, namely the sum of the measure of disjoint 
+subsets is equal the measure of the union of said subsets. One could quite easily rephrase this as a counting argument 
+by using disjointness and the fact we have at most $n!$ permutations, then dividing through by $n!$ at the very end. 
 
 \subsubsection*{Exercises}
 
@@ -745,5 +1056,42 @@ no fixed points tends to $1/e$.
 \section{Solutions}
 
 Here I list the exercise solutions in a random order. I will store which exercises have a solution in the README of this repository. 
+
+\begin{proof}[Solution 1.1.8]
+    We observe that the table has rotational symmetry as the table is round, so that each $n!$ ways we could arrange the people in a line 
+    could sit in $n$ possible ways giving $(n-1)!$ total seatings. 
+\end{proof}
+
+\begin{proof}[Solution 1.1.9]
+    For the first part I give three solutions.
+    \begin{enumerate}
+        \item We write the set as a binary string. 
+        Map $\mu_A(i) = 1$  if $i \in A$ and $0$ elsewhere in $[n]$ for each subset $A \subseteq [n]$. Then there as each $\mu_A$ 
+        can either have $i = 0$ or $i = 1$ for $i \in [n]$ we have $2^n$ possible choices for the $\mu_A$ which bijects with the subsets 
+        of $[n]$. $\qquad \square$
+        \item We induct. 
+        Clearly there are $2$ subsets of $[1]$, $\emptyset$ and $\{1\}$. Suppose there are $2^{n-1}$ subsets of $[n-1]$. Then for each subset
+        of $[n]$, either $n \in [n]$ or $n \notin [n]$ so we have $2 \times 2^{n-1} =2^n$ subsets of $[n]$ and the induction is complete. $\qquad \square$
+        \item For each $0 \leq k \leq n$ there are $\binom{n}{k}$ subsets of size k so by the binomial theorem there are 
+        $\sum_{k = 0}^n \binom{n}{k} = 2^n$ such subjects. $\qquad \square$ 
+    \end{enumerate}
+    For the second, two. 
+    \begin{enumerate}
+        \item We instead biject from the odd subsets to the even. Consider the map $\mu(A)$ from the subsets of $[n-1]$ to the even sized 
+        subsets of $[n]$ that has $A \mapsto A \cup \{n\}$ iff $|A|$ odd and to itself otherwise. Then $\mu(A)$ has a clear inverse 
+        mapping $A \mapsto A \setminus \{n\}$ iff $|A|$ odd and to itself if $|A|$ even. Hence as $\mu$ bijects we have $2^{n-1}$ such 
+        subsets from the first part. $\qquad \square$
+        \item We have 
+        \[\sum_{\substack{A \subseteq [n] \\ 2 \;  \mid \; |A|}}\binom{n}{|A|} - \sum_{\substack{A \subseteq [n] \\ 2 \; \nmid \; |A|}}\binom{n}{|A|}
+        = \sum_{A \subseteq [n]} \binom{n}{|A|}(-1)^{|A|} = 0\] 
+        from the binomial theorem and hence an equal number of odd and even sized subsets, giving $2^n / 2 = 2^{n-1}$ odd/even subsets. $\qquad \square$
+    \end{enumerate}
+    I'm sure more proofs of these facts exist. Try to come up with some!
+\end{proof}
+
+\begin{proof}[Solution 1.1.20]
+    Select the pairs sequentially, giving $(n \times (n-1)) \times (n-1) \times (n-2) \times \cdots \times 2 \times 1$ 
+    possible ways of selecting the people, and $(n!)^2$  
+\end{proof}
 
 \end{document}

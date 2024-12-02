@@ -1,0 +1,190 @@
+\documentclass{article} 
+
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage[a4paper, margin=1in]{geometry} 
+\usepackage{titling}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{mathtools}
+\usepackage{amsthm} % For proof environments only, labelling of thms done with custom counter
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp} % TM logo, shits n giggles
+
+%%% Misc commands %%%
+\newcommand\iidsim{\stackrel{\mathclap{\tiny\mbox{i.i.d}}}{\sim}}
+\newcommand\csim[1]{\stackrel{{\scriptscriptstyle #1}}{\sim}}
+\newcommand\indist{\stackrel{\mathclap{\tiny\mbox{$\mathcal{D}$}}}{\longrightarrow}}
+\newcommand\nidist{\stackrel{\mathclap{\tiny\mbox{$\mathcal{D}$}}}{\longleftarrow}}
+\newcommand{\indep}{\perp\!\!\!\!\perp} 
+
+\setlength{\parindent}{0pt} % Remove indentation upon new paragraph. 
+
+%%% Title page information %%%
+\title{Combinatorics}
+\author{Jacob Green}
+\date{\today}
+\newcommand{\subtitle}{}
+\newcommand{\institution}{Department of Mathematical Sciences, The University of Bath}
+\newcommand{\keywords}{Combinatorics, Probability}
+
+\newcounter{definitioncount} % tcolorbox counter, for ease of self-reference
+\newcounter{lemmacount}
+\newcounter{examplecount}
+\newcounter{theoremcount}
+\newcounter{propositioncount}
+\newcounter{corollarycount}
+\newcounter{remarkcount}
+\newcounter{problemcount}
+\newcounter{exercisecount}
+\counterwithin{corollarycount}{section}
+\counterwithin{propositioncount}{section}
+\counterwithin{remarkcount}{section}
+\counterwithin{theoremcount}{section}
+\counterwithin{examplecount}{section}
+\counterwithin{lemmacount}{section}
+\counterwithin{definitioncount}{section}
+\counterwithin{problemcount}{section}
+\counterwithin{exercisecount}{section}
+\renewcommand{\thecorollarycount}{\thesection.\arabic{corollarycount}}
+\renewcommand{\thepropositioncount}{\thesection.\arabic{propositioncount}}
+\renewcommand{\theremarkcount}{\thesection.\arabic{remarkcount}}
+\renewcommand{\thetheoremcount}{\thesection.\arabic{theoremcount}}
+\renewcommand{\theexamplecount}{\thesection.\arabic{examplecount}}
+\renewcommand{\thelemmacount}{\thesection.\arabic{lemmacount}}
+\renewcommand{\thedefinitioncount}{\thesection.\arabic{definitioncount}}
+\renewcommand{\theproblemcount}{\thesection.\arabic{problemcount}}
+\renewcommand{\theexercisecount}{\thesection.\arabic{exercisecount}}
+\newcounter{claimcount} % Used for proof with lots of claims
+
+\newtcolorbox{definition}[2][auto counter, number within=section]{
+  colback=black!5!white, 
+  colframe=black!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black,
+  title=Definition \thedefinitioncount $\:$ (#2), 
+  before upper = \refstepcounter{definitioncount},
+  #1, % Optional params
+}
+
+\newtcolorbox{lemma}[2][auto counter, number within=section]{
+  colback=blue!5!white, 
+  colframe=blue!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Lemma \thelemmacount $\:$ (#2),
+  before upper = \refstepcounter{lemmacount} 
+  #1, % Optional params
+}
+
+\newtcolorbox{example}[2][auto counter, number within=section]{
+  colback=green!5!white, 
+  colframe=green!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Example \theexamplecount $\:$ (#2), 
+  before upper = \refstepcounter{examplecount}
+  #1, % Optional params
+}
+
+\newtcolorbox{problem}[2][auto counter, number within=section]{
+  colback=purple!5!white, 
+  colframe=purple!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Problem \theproblemcount $\:$ (#2), 
+  before upper = \refstepcounter{problemcount}
+  #1, % Optional params
+}
+
+\newtcolorbox{theorem}[2][auto counter, number within=section]{
+  colback=red!5!white,
+  colframe=red!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Theorem \thetheoremcount $\:$ (#2), 
+  before upper = \refstepcounter{theoremcount},
+  #1, % Optional params
+}
+
+\newtcolorbox{proposition}[2][auto counter, number within=section]{
+  colback=purple!5!white,
+  colframe=purple!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Proposition \thepropositioncount $\:$ (#2), 
+  before upper = \refstepcounter{propositioncount},
+  #1, % Optional params
+}
+
+\newtcolorbox{corollary}[2][auto counter, number within=section]{
+  colback=yellow!5!white,
+  colframe=yellow!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Corollary \thecorollarycount $\:$ (#2),
+  before upper = \refstepcounter{corollarycount}, 
+  #1, % Optional params
+}
+
+\newtcolorbox{remark}[2][auto counter, number within=section]{
+  colback=black!5!white,
+  colframe=black!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Remark \theremarkcount $\:$ (#2),
+  before upper = \refstepcounter{remarkcount}, 
+  #1, % Optional params
+}
+
+\newtcolorbox{exercise}[2][auto counter, number within=section]{
+  colback=black!5!white,
+  colframe=black!50!white, 
+  fonttitle=\bfseries, 
+  coltitle=black, 
+  title=Exercise \theexercisecount $\:$ #2,
+  before upper = \refstepcounter{exercisecount}, 
+  #1, % Optional params
+}
+
+\newtcolorbox[use counter=claimcount]{claim}[1][]{%
+    colback=green!10, 
+    colframe=green!50!black, 
+    coltitle=black, 
+    fonttitle=\bfseries, 
+    boxrule=0.5mm, 
+    colbacktitle=green!30,
+    enhanced, % Allows additional options
+    boxed title style={sharp corners}, 
+    attach title to upper={},
+    titlerule=0mm, 
+    title=Claim: $\;$,
+    before=\par\smallskip\noindent, 
+    #1
+}
+
+\begin{document}
+
+\begin{problem}[]{constructing $K_n$}
+    Let $G$ be a graph with $n$ vertices and $m$ edges. Prove we can express the complete graph $K_n$ as the union 
+    of $O(n^2\log n /m)$ isomorphic copies of $G$.  
+\end{problem}
+
+\begin{proof}[Solution]
+    Isomorphisms are just permutations of the vertices of $G$. We will work by randomly sampling, independently and 
+    uniformly, these permutations. \\
+
+    Let $\sigma \in S_n$ be a permutation of $[n]$, the vertices of $G$, denoting the resulting graph 
+    $G_\sigma$. Then, denoting the adjacency relation in an arbitrary graph $H$ by $i \csim{H} j$, we have 
+    $i \csim{G} j$ iff $\sigma(i) \csim{G_\sigma} \sigma(j)$. Thus, it suffices to find $\sigma_1, \dots, \sigma_\ell$ 
+    that have 
+    \[\forall v \neq w \in [n] \, \exists 1 \leq k \leq \ell \, \exists i \csim{G} j \; : \; \sigma_k(i) = v,
+    \sigma_k(w) = j\]
+    Let $A_{v,w}$ be the event that we have such a permutation for the pair $(v, w)$ and fix $\ell \in \mathbb{N}$.
+      
+    
+\end{proof}
+
+\end{document}

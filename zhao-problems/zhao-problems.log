@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.2)  1 DEC 2024 14:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.2)  19 NOV 2024 12:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/jacob/proj/combinatorics/notes/combi-notes.tex
-(c:/Users/jacob/proj/combinatorics/notes/combi-notes.tex
+**c:/Users/jacob/proj/combinatorics/zhao-problems/zhao-problems.tex
+(c:/Users/jacob/proj/combinatorics/zhao-problems/zhao-problems.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
 (C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -516,37 +516,45 @@ Package: amsthm 2020/05/29 v2.20.6
 ) (C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )
-\c@statementcount=\count330
-\c@claimcount=\count331
- (combi-notes.aux)
-\openout1 = `combi-notes.aux'.
+\c@definitioncount=\count330
+\c@lemmacount=\count331
+\c@examplecount=\count332
+\c@theoremcount=\count333
+\c@propositioncount=\count334
+\c@corollarycount=\count335
+\c@remarkcount=\count336
+\c@problemcount=\count337
+\c@exercisecount=\count338
+\c@claimcount=\count339
+ (zhao-problems.aux)
+\openout1 = `zhao-problems.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 143.
-LaTeX Font Info:    ... okay on input line 143.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 143.
-LaTeX Font Info:    ... okay on input line 143.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 143.
-LaTeX Font Info:    ... okay on input line 143.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 143.
-LaTeX Font Info:    ... okay on input line 143.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 143.
-LaTeX Font Info:    ... okay on input line 143.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 143.
-LaTeX Font Info:    ... okay on input line 143.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 143.
-LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
  (C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count332
+\scratchcounter=\count340
 \scratchdimen=\dimen285
 \scratchbox=\box82
-\nofMPsegments=\count333
-\nofMParguments=\count334
+\nofMPsegments=\count341
+\nofMParguments=\count342
 \everyMPshowfont=\toks47
-\MPscratchCnt=\count335
+\MPscratchCnt=\count343
 \MPscratchDim=\dimen286
-\MPnumerator=\count336
-\makeMPintoPDFobject=\count337
+\MPnumerator=\count344
+\makeMPintoPDFobject=\count345
 \everyMPtoPDFconversion=\toks48
 ) (C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -554,7 +562,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-\c@lstlisting=\count338
+\c@lstlisting=\count346
  (C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks49
@@ -594,207 +602,40 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+LaTeX Font Info:    Trying to load font information for U+msa on input line 170.
+(C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 170.
+ (C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 176--178
+
+ []
+
 
 
 [1
 
-{C:/Users/jacob/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 189.
- (C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 189.
- (C:\Users\jacob\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-[1] (combi-notes.toc)
-\tf@toc=\write4
-\openout4 = `combi-notes.toc'.
-
-
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 205--208
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 256--260
-
- []
-
-
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 284--287
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 306--308
-
- []
-
-
-
-[4]
-
-[5]
-
-[6]
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
-
- []
-
-
-Overfull \hbox (2.86514pt too wide) detected at line 511
-[]
- []
-
-
-
-[8]
-
-[9]
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 618--621
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 654--658
-
- []
-
-
-
-[11]
-
-[12]
-
-[13]
-
-[14]
-
-[15]
-
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 743--745
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 763--764
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 785--787
-
- []
-
-
-
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 815--818
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 836--837
-
- []
-
-
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 875--878
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 899--901
-
- []
-
-
-
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 912--913
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 919--921
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 926--927
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 938--943
-
- []
-
-
-
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 968--971
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 977--980
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 981--983
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1010--1011
-
- []
-
-
-
-[21]
-
-[22]
-
-[23]
-
-[24]
-
-[25]
-
-[26] (combi-notes.aux)
+{C:/Users/jacob/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (zhao-problems.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 22293 strings out of 473899
- 483406 string characters out of 5726500
- 979625 words of memory out of 5000000
- 44770 multiletter control sequences out of 15000+600000
- 568218 words of font info for 73 fonts, out of 8000000 for 9000
+ 22143 strings out of 473899
+ 480580 string characters out of 5726500
+ 965041 words of memory out of 5000000
+ 44641 multiletter control sequences out of 15000+600000
+ 560422 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,11n,121p,485b,947s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\jacob\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on combi-notes.pdf (27 pages, 415479 bytes).
+ 116i,5n,121p,495b,621s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/jacob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on zhao-problems.pdf (1 page, 110659 bytes).
 PDF statistics:
- 268 PDF objects out of 1000 (max. 8388607)
+ 90 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 
